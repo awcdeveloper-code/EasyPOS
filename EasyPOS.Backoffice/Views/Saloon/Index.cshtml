@@ -1,0 +1,79 @@
+﻿@model List<TablesAndSeats>
+@{
+    ViewData["Title"] = "EasyPOS Salón";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Tables Overview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white font-sans text-gray-700 min-h-screen flex flex-col">
+
+    <main class="flex-grow max-w-6xl mx-auto px-6 py-12">
+
+        <h3 class="text-4xl font-extrabold mb-5 text-gray-900">EasyPOS Salón</h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+
+            <!-- Available Tables Card -->
+            <section aria-labelledby="available-tables-heading" class="bg-white rounded-lg shadow-md p-6">
+                <h2 id="available-tables-heading" class="text-2xl font-semibold mb-6 text-gray-900">Mesas Disponibles</h2>
+
+                <table class="min-w-full border-collapse">
+                    <thead>
+                        <tr class="bg-gray-300">
+                            <th scope="col" class="text-left py-3 px-4 font-semibold text-gray-700">No. Mesa/Barra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var table in Model.Where(x => x.Status == false))
+                        {
+                            <tr class="cursor-pointer hover:bg-gray-50 transition-colors duration-200">
+                                <td class="py-3 px-4">
+                                    <a href="@Url.Action("Details", "Table", new { id = table.Id })"
+                                       class="text-blue-600 hover:text-blue-800 focus:outline-none focus:underline"
+                                       aria-label="View details for table @table.TableName">
+                                        @table.TableName
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Occupied Tables Card -->
+            <section aria-labelledby="occupied-tables-heading" class="bg-white rounded-lg shadow-md p-6">
+                <h2 id="occupied-tables-heading" class="text-2xl font-semibold mb-6 text-gray-900">Mesas Ocupadas</h2>
+
+                <table class="min-w-full border-collapse">
+                    <thead>
+                        <tr class="bg-gray-300">
+                            <th scope="col" class="text-left py-3 px-4 font-semibold text-gray-700">No. Mesa/Barra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var table in Model.Where(x => x.Status == true))
+                        {
+                            <tr class="cursor-pointer hover:bg-gray-50 transition-colors duration-200">
+                                <td class="py-3 px-4">
+                                    <a href="@Url.Action("Details", "Table", new { id = table.Id })"
+                                       class="text-red-600 hover:text-red-800 focus:outline-none focus:underline"
+                                       aria-label="View details for occupied table @table.TableName">
+                                        @table.TableName
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </section>
+
+        </div>
+    </main>
+</body>
+</html>

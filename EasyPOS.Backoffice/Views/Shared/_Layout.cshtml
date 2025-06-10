@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyPOS BackOffice</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/EasyPOS.Backoffice.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand text-light" asp-controller="Home" asp-action="Index">EasyPOS BackOffice</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor01">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Saloon" asp-action="Index">Salón</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Configuración</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Config" asp-action="Roles">Roles</a>
+                                <a class="dropdown-item" asp-controller="Config" asp-action="Actions">Acciones</a>
+                                <a class="dropdown-item" asp-controller="Config" asp-action="Users">Colaboradores</a>
+                                <a class="dropdown-item" asp-controller="Config" asp-action="Log">Bitácora</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="Config" asp-action="Products">Productos</a>
+                                <a class="dropdown-item" asp-controller="Config" asp-action="Buckets">Baldes</a>
+                                <a class="dropdown-item" asp-controller="Config" asp-action="Promotions">Promociones</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="Config" asp-action="Saloon">Mesas y Barras</a>
+                                <a class="dropdown-item" asp-controller="Config" asp-action="VIPCustomers">Clientes Frecuentes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Inventario</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Providers">Proveedores</a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Shopping">Compras</a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Notes">Notas Crédito/Débito</a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="DamagedProducts">Productos Dañados</a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="InventoryCheck">Estado de Existencias</a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Reports">Reportes</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ayuda</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Help" asp-action="GetHelp">Ver Ayuda</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="InitialTour">Tour Inicial</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="TipsAndTricks">Consejos y Trucos</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="WhatsNew">Qué hay nuevo?</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="ReportProblem">Reportar un problema</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="SuggestNewFeature">Sugerir una mejora</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="TechnicalSupport">Soporte Técnico</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="CheckForUpdates">Revisar Actualizaciones</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="TermsAndConditions">Términos y Condiciones</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="AboutEasyPOS">Acerca de EasyPOS</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-sm-2" type="search" placeholder="Buscar">
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - EasyPOS BackOffice
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
