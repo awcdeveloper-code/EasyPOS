@@ -1,0 +1,128 @@
+﻿@model List<Product>
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            padding: 24px;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        }
+
+        thead {
+            background: linear-gradient(180deg, cyan, darkblue);
+            color: #f0f0f0;
+        }
+
+            thead th {
+                padding: 8px 12px;
+                text-align: left;
+                font-weight: 700;
+                font-size: 1rem;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            }
+
+        tbody tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            transition: background-color 0.3s ease;
+        }
+
+            tbody tr:hover {
+                background-color: rgba(107, 91, 149, 0.3);
+            }
+
+        tbody td {
+            padding: 8px 12px;
+            font-weight: 400;
+            font-size: 0.95rem;
+        }
+
+        @@media (max-width: 640px) {
+            body {
+                padding: 8px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
+
+            thead th, tbody td {
+                padding: 6px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row pt-4 pb-3">
+            <div class="col-6">
+                <h2 class="text-black">Lista de Productos</h2>
+            </div>
+            <div class="col-6 text-end">
+                <a asp-controller="Products" asp-action="Create" class="btn btn-primary">Crear Producto</a>
+            </div>
+        </div>
+        <table aria-label="Lista de Productos">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col" style="width:250px">Descripción</th>
+                    <th scope="col">Categoría</th>
+                    <th scope="col">Costo</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model.OrderBy(item => item.Description))
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Description</td>
+                            <td>@item.Category</td>
+                            <td>@item.Cost</td>
+                            <td>@item.Price</td>
+                            <td>@item.Stock</td>
+                            <td>@item.Status</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a asp-controller="Products" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary" style="width:100px">Editar</a>
+                                    <a asp-controller="Products" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="width:100px">Borrar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" style="text-align:center; color:red;"><strong>NO HAY DATOS DISPONIBLES</strong></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

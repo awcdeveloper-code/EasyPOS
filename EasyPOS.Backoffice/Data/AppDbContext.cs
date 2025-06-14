@@ -12,7 +12,9 @@ namespace EasyPOS.Backoffice.Data
         public DbSet<Log> Logger { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<TablesAndSeats> TablesAndSeats { get; set; }
+        public DbSet<TableOrSeat> TablesOrSeats { get; set; }
+        public DbSet<NewFeatureRequest> NewFeatureRequests { get; set; }
+        public DbSet<ReportProblem> ReportProblems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,23 +30,42 @@ namespace EasyPOS.Backoffice.Data
 
             modelBuilder.Entity<Category>().HasKey(u => u.Id);
 
-            modelBuilder.Entity<Product>()
-                .HasOne(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryId)
-                .IsRequired();
+            modelBuilder.Entity<Product>().HasKey(u => u.Id);
 
-            // Configure the Cost property
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Cost)
-                .HasPrecision(10, 2);
+            modelBuilder.Entity<TableOrSeat>().HasKey(u => u.Id);
 
-            // Configure the Price property
-            modelBuilder.Entity<Product>()
-                .Property(p => p.Price)
-                .HasPrecision(10, 2);
+            modelBuilder.Entity<NewFeatureRequest>().HasKey(u => u.Id);
 
-            modelBuilder.Entity<TablesAndSeats>().HasKey(u => u.Id);
+            modelBuilder.Entity<ReportProblem>().HasKey(u => u.Id);
+
+            // adjust columns type
+            modelBuilder.Entity<User>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.LastLogin)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Category>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Role>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<NewFeatureRequest>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<ReportProblem>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
         }
     }
 }

@@ -1,4 +1,31 @@
-﻿@{
-    ViewData["Title"] = "Categorías";
+﻿@model Category
+@{
+    ViewData["Title"] = "Categorias";
 }
+
 <h1>@ViewData["Title"]</h1>
+
+<form method="post">
+    <div class="form-group mb-3">
+        @* Add margin-bottom: 1rem; *@
+        <label asp-for="Description" />
+        <input asp-for="Description" class="form-control" style="width: 500px;" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        @* Add margin-bottom: 1rem; *@
+        <label asp-for="Status" />
+        <select asp-for="Status" class="form-control" style="width: 150px;">
+            <option value="Activo">Activo</option>
+            <option value="Inactivo">Desactivado</option>
+        </select>
+        <span asp-validation-for="Status" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">Aceptar</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

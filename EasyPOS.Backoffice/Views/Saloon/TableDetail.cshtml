@@ -1,0 +1,11 @@
+﻿@model TableOrSeat
+@{
+    ViewData["Title"] = "Detalle";
+}
+
+<h1>@ViewData["Title"] @Model.Name</h1>
+
+<form asp-controller="Saloon" asp-action="TableAvailable" asp-route-id="@Model.Id" method="post">
+    <button type="submit" class="btn btn-danger">Hacer Disponible</button>
+</form>
+

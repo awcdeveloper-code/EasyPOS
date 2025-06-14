@@ -9,10 +9,18 @@ namespace EasyPOS.Backoffice.Models
     public class Category
     {
         [Key]
+        [Display(Name = "Código")]
         public int Id { get; set; }
-        public string? Description { get; set; }
-        public bool Active { get; set; }
-        public DateTime CreatedAt { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+
+        [Required(ErrorMessage = "La descripción es requisito.")]
+        [MaxLength(30)]
+        [Display(Name = "Descripción")]
+        public string? Description { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "El estado es requisito.")]
+        [MaxLength(20)]
+        [Display(Name = "Estado")]
+        public string Status { get; set; } = string.Empty;
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

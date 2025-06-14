@@ -1,6 +1,45 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Política de Privacidad";
 }
-<h1>@ViewData["Title"]</h1>
 
-<p>Use this page to detail your site's privacy policy.</p>
+<div class="max-w-4xl mx-auto px-4 py-8 text-gray-800">
+    <h1 class="text-3xl font-bold mb-6">Política de Privacidad</h1>
+
+    <p class="mb-4">En <strong>EasyPOS</strong> valoramos la privacidad y protección de los datos personales de nuestros clientes, proveedores y usuarios. Esta política explica cómo recopilamos, utilizamos, protegemos y gestionamos la información personal dentro de nuestro sistema de punto de venta.</p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">1. Información que recopilamos</h2>
+    <ul class="list-disc pl-6 mb-4 space-y-1">
+        <li>Datos de contacto (nombre, correo electrónico, teléfono).</li>
+        <li>Información de facturación y métodos de pago.</li>
+        <li>Historial de compras, pedidos y consumo.</li>
+        <li>Datos técnicos: direcciones IP, logs de acceso, información del dispositivo.</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">2. Finalidad del tratamiento</h2>
+    <ul class="list-disc pl-6 mb-4 space-y-1">
+        <li>Gestionar ventas, facturación y atención al cliente.</li>
+        <li>Optimizar procesos internos del restaurante o bar.</li>
+        <li>Ofrecer soporte técnico y actualizaciones del sistema.</li>
+        <li>Enviar comunicaciones informativas o comerciales (previo consentimiento).</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">3. Compartición de datos</h2>
+    <p class="mb-4">No vendemos ni compartimos información personal con terceros, salvo en los siguientes casos:</p>
+    <ul class="list-disc pl-6 mb-4 space-y-1">
+        <li>Proveedores de servicios necesarios para el funcionamiento del sistema (hosting, bases de datos, etc.).</li>
+        <li>Cumplimiento de obligaciones legales o requerimientos de autoridades competentes.</li>
+    </ul>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">4. Seguridad de la información</h2>
+    <p class="mb-4">Implementamos medidas técnicas, organizativas y administrativas para proteger los datos personales frente a accesos no autorizados, pérdida o destrucción.</p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">5. Derechos del usuario</h2>
+    <p class="mb-4">El usuario puede ejercer sus derechos de acceso, rectificación, cancelación o eliminación de datos personales enviando una solicitud a: <strong>aidawareconsultancies@gmail.com</strong></p>
+
+    <h2 class="text-2xl font-semibold mt-6 mb-2">6. Cambios a esta política</h2>
+    <p class="mb-4">Nos reservamos el derecho a modificar esta política en cualquier momento. Las modificaciones serán publicadas en este sitio web.</p>
+
+    <footer class="mt-4 text-center text-muted">
+        Última Actualización: @DateTime.Now.ToString("dd/MM/yyyy")
+    </footer>
+</div>

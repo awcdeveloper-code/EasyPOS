@@ -1,4 +1,70 @@
-﻿@{
-    ViewData["Title"] = "Términos y Condiciones";
-}
-<h1>@ViewData["Title"]</h1>
+﻿@model EasyPOS
+
+<h1 class="text-center">Términos y Condiciones de Uso</h1>
+
+<section>
+    <h3>1. Definiciones</h3>
+    <p><strong>Software:</strong> Programa, aplicación, plataforma o sistema ofrecido por <strong>@Model.CompanyName</strong>.</p>
+    <p><strong>Licenciante:</strong> <strong>@Model.CompanyName</strong> o sus proveedores.</p>
+    <p><strong>Usuario:</strong> Persona física o jurídica que utiliza el software.</p>
+</section>
+
+<section>
+    <h3>2. Aceptación de los Términos</h3>
+    <p>El acceso o uso del software implica la aceptación plena de estos términos. Si el usuario no está de acuerdo, debe abstenerse de utilizarlo.</p>
+</section>
+
+<section>
+    <h3>3. Licencia de Uso</h3>
+    <p>Se concede al usuario una licencia <strong>no exclusiva, intransferible y revocable</strong> para el uso del software.</p>
+    <p>Está prohibido:</p>
+    <ul>
+        <li>Copiar, modificar, distribuir o sublicenciar el software.</li>
+        <li>Realizar ingeniería inversa o descompilación, salvo autorización expresa.</li>
+    </ul>
+</section>
+
+<section>
+    <h3>4. Propiedad Intelectual</h3>
+    <p>Todos los derechos sobre el software pertenecen a <strong>@Model.CompanyName</strong>. El usuario no adquiere ningún derecho de propiedad por su uso.</p>
+</section>
+
+<section>
+    <h3>5. Actualizaciones</h3>
+    <p><strong>@Model.CompanyName</strong> podrá realizar actualizaciones o mejoras que podrán ser obligatorias para continuar el uso del software.</p>
+</section>
+
+<section>
+    <h3>6. Soporte Técnico</h3>
+    <p>El soporte técnico se ofrece de forma <strong>@Model.SupportType</strong> a través de <strong>@Model.SupportChannels</strong>.</p>
+</section>
+
+<section>
+    <h3>7. Política de Privacidad</h3>
+    <p>Para conocer cómo se gestionan sus datos personales, consulte nuestra <a href="@Url.Action("Privacy", "Home")">Política de Privacidad</a>.</p>
+</section>
+
+<section>
+    <h3>8. Responsabilidades y Garantías</h3>
+    <p>El software se proporciona “tal cual”, sin garantías expresas o implícitas.</p>
+    <p><strong>@Model.CompanyName</strong> no será responsable por daños o pérdidas derivadas del uso o imposibilidad de uso del software.</p>
+</section>
+
+<section>
+    <h3>9. Terminación del Contrato</h3>
+    <p>Este contrato se extingue si el usuario incumple los términos. Al finalizar, deberá dejar de utilizar el software y eliminar cualquier copia del mismo.</p>
+</section>
+
+<section>
+    <h3>10. Ley Aplicable y Jurisdicción</h3>
+    <p>Este contrato se rige por las leyes de <strong>@Model.Jurisdiction</strong>. Para cualquier controversia, las partes se someten a los tribunales competentes de dicha jurisdicción.</p>
+</section>
+
+<section>
+    <h3>11. Modificaciones</h3>
+    <p><strong>@Model.CompanyName</strong> podrá modificar estos términos en cualquier momento. El uso continuado después de cambios implica su aceptación.</p>
+</section>
+
+<footer class="mt-4 text-center text-muted">
+    Última Actualización: @DateTime.Now.ToString("dd/MM/yyyy")
+</footer>

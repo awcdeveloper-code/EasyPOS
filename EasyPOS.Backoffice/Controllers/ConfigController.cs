@@ -1,9 +1,19 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using EasyPOS.Backoffice.Models;
+using System.Threading.Tasks;
+using EasyPOS.Backoffice.Data;
 
 namespace EasyPOS.Backoffice.Controllers
 {
     public class ConfigController : Controller
     {
+        private readonly AppDbContext _appDbContext;
+        private readonly ILogger<ConfigController> _logger;
+        public ConfigController(AppDbContext appDbContext, ILogger<ConfigController> logger)
+        {
+            _appDbContext = appDbContext;
+            _logger = logger;
+        }
         public IActionResult Roles()
         {
             return View();
@@ -24,6 +34,7 @@ namespace EasyPOS.Backoffice.Controllers
         {
             return View();
         }
+
         public IActionResult Products()
         {
             return View();

@@ -6,12 +6,11 @@
     <title>EasyPOS BackOffice</title>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/EasyPOS.Backoffice.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+        <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container-fluid">
                 <a class="navbar-brand text-light" asp-controller="Home" asp-action="Index">EasyPOS BackOffice</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,14 +24,15 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Configuración</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-controller="Config" asp-action="Roles">Roles</a>
+                                <a class="dropdown-item" asp-controller="Roles" asp-action="Index">Roles</a>
+                                <a class="dropdown-item" asp-controller="Users" asp-action="Index">Colaboradores</a>
                                 <a class="dropdown-item" asp-controller="Config" asp-action="Actions">Acciones</a>
-                                <a class="dropdown-item" asp-controller="Config" asp-action="Users">Colaboradores</a>
                                 <a class="dropdown-item" asp-controller="Config" asp-action="Log">Bitácora</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="Config" asp-action="Products">Productos</a>
-                                <a class="dropdown-item" asp-controller="Config" asp-action="Buckets">Baldes</a>
-                                <a class="dropdown-item" asp-controller="Config" asp-action="Promotions">Promociones</a>
+                                <a class="dropdown-item" asp-controller="Categories" asp-action="Index">Categorías</a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Index">Productos</a>
+                                <a class="dropdown-item" asp-controller="Buckets" asp-action="Index">Baldes</a>
+                                <a class="dropdown-item" asp-controller="Promotions" asp-action="Index">Promociones</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-controller="Config" asp-action="Saloon">Mesas y Barras</a>
                                 <a class="dropdown-item" asp-controller="Config" asp-action="VIPCustomers">Clientes Frecuentes</a>
@@ -57,8 +57,8 @@
                                 <a class="dropdown-item" asp-controller="Help" asp-action="TipsAndTricks">Consejos y Trucos</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-controller="Help" asp-action="WhatsNew">Qué hay nuevo?</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="ReportProblem">Reportar un problema</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="SuggestNewFeature">Sugerir una mejora</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="ReportProblem_Index">Reportar un Problema</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="NewFeatureRequest_Index">Sugerir una mejora</a>
                                 <a class="dropdown-item" asp-controller="Help" asp-action="TechnicalSupport">Soporte Técnico</a>
                                 <a class="dropdown-item" asp-controller="Help" asp-action="CheckForUpdates">Revisar Actualizaciones</a>
                                 <div class="dropdown-divider"></div>
@@ -77,15 +77,19 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_ToastNotification" />
             @RenderBody()
         </main>
     </div>
 
+    <!--
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - EasyPOS BackOffice
         </div>
     </footer>
+    -->
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

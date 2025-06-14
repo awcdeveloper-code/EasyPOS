@@ -1,0 +1,45 @@
+﻿@model Product
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Borrar Producto</h2>
+            <hr />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Id" class="p-0"></label>
+            <input asp-for="Id" class="form-control" style="width: 150px;" disabled/>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Description" class="p-0"></label>
+            <input asp-for="Description" class="form-control" style="width: 500px;" disabled />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Category" class="p-0"></label>
+            <input asp-for="Category" class="form-control" style="width: 250px;" disabled />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Cost" class="p-0"></label>
+            <input asp-for="Cost" class="form-control" style="width: 500px;" disabled />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Price" class="p-0"></label>
+            <input asp-for="Price" class="form-control" style="width: 500px;" disabled />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Stock" class="p-0"></label>
+            <input asp-for="Stock" class="form-control" style="width: 500px;" disabled />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Status" class="p-0"></label>
+            <input asp-for="Status" class="form-control" style="width: 150px;" disabled />
+        </div>
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Borrar</button>
+            </div>
+            <div class="col-3 col-md-3">
+                <a asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary form-control border">Regresar</a>
+            </div>
+        </div>
+    </div>
+</form>

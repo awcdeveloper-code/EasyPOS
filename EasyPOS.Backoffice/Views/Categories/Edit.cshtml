@@ -1,0 +1,41 @@
+﻿@model Category
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Editar Categoría</h2>
+            <hr/>
+        </div>
+        <div asp-validation-summary="None"></div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Description" class="p-0" style="width: 150px;"></label>
+            <input asp-for="Description" class="form-control" readonly />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Description" class="p-0" style="width: 300px;"></label>
+            <input asp-for="Description" class="form-control" />
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Status" class="p-0" />
+            <select asp-for="Status" class="form-control" style="width: 150px;">
+                <option value="Activo">Activo</option>
+                <option value="Inactivo">Inactivo</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Actualizar</button>
+            </div>
+            <div class="col-3 col-md-3">
+                <a asp-controller="Categories" asp-action="Index" class="btn btn-outline-secondary form-control border">Regresar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name ="_ValidationScriptsPartial" />
+    }
+}

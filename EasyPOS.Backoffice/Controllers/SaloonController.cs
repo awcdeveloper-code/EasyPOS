@@ -1,6 +1,7 @@
 ﻿using EasyPOS.Backoffice.Data;
 using EasyPOS.Backoffice.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace EasyPOS.Backoffice.Controllers
 {
@@ -14,13 +15,53 @@ namespace EasyPOS.Backoffice.Controllers
             _appDbContext = appDbContext;
             _logger = logger;
         }
+
         public IActionResult Index()
         {
-            _logger.LogInformation("SaloonController:Index called.");
+            _logger.LogInformation("SaloonController:Index was called.");
 
-            List<TablesAndSeats> tablesAndSeats = _appDbContext.TablesAndSeats.ToList();
-            
-            return View(tablesAndSeats);
+            List<TableOrSeat> tableOrSeats = _appDbContext.TablesOrSeats.ToList();
+
+            return View(tableOrSeats);
+        }
+
+        public async Task<IActionResult> TableAssignment(int id)
+        {
+            _logger.LogInformation("SaloonController:TableAssignment was called.");
+
+            TableOrSeat ts = await _appDbContext.TablesOrSeats.FindAsync(id);
+
+            if (ts != null)
+            {
+                ts.Status = true;
+                await _appDbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> TableDetail(int id)
+        {
+            _logger.LogInformation("SaloonController:TableDetail was called.");
+
+            TableOrSeat ts = await _appDbContext.TablesOrSeats.FindAsync(id);
+
+            return View(ts);
+        }
+
+        public async Task<IActionResult> TableAvailable(int id)
+        {
+            _logger.LogInformation("SaloonController:TableAvailable was called.");
+
+            TableOrSeat ts = await _appDbContext.TablesOrSeats.FindAsync(id);
+
+            if (ts != null)
+            {
+                ts.Status = false;
+                await _appDbContext.SaveChangesAsync();
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
