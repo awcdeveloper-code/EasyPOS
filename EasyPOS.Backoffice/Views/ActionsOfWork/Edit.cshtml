@@ -1,0 +1,45 @@
+﻿@model ActionOfWorkViewModel
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Crear Producto</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="None"></div>
+        <div class="mb-3 row p-1">
+            <label asp-for="ActionOfWork.Id" class="p-0"></label>
+            <input asp-for="ActionOfWork.Id" class="form-control" style="width: 150px;" readonly />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="ActionOfWork.Name" class="p-0"></label>
+            <input asp-for="ActionOfWork.Name" class="form-control" style="width: 300px;" />
+            <span asp-validation-for="ActionOfWork.Name" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="ActionOfWork.Role" class="p-0"></label>
+            <select asp-for="ActionOfWork.Role" asp-items="Model.Roles" class="form-control" style="width: 250px;"></select>
+            <span asp-validation-for="ActionOfWork.Role" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="ActionOfWork.Status" class="p-0"></label>
+            <select asp-for="ActionOfWork.Status" class="form-control" style="width: 150px;">
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+            </select>
+            <span asp-validation-for="ActionOfWork.Status" class="text-danger"></span>
+        </div>
+
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Actualizar</button>
+            </div>
+            <div class="col-3 col-md-3">
+                <a asp-controller="ActionsOfWork" asp-action="Index" class="btn btn-outline-secondary form-control border">Regresar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

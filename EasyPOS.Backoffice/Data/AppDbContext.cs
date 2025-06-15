@@ -8,7 +8,7 @@ namespace EasyPOS.Backoffice.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<Models.Action> Actions { get; set; }
+        public DbSet<ActionOfWork> ActionsOfWork { get; set; }
         public DbSet<Log> Logger { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -24,7 +24,7 @@ namespace EasyPOS.Backoffice.Data
 
             modelBuilder.Entity<Role>().HasKey(u => u.Id);
 
-            modelBuilder.Entity<Models.Action>().HasKey(u => u.Id);
+            modelBuilder.Entity<ActionOfWork>().HasKey(u => u.Id);
 
             modelBuilder.Entity<Log>().HasKey(u => u.Id);
 
@@ -64,6 +64,10 @@ namespace EasyPOS.Backoffice.Data
                 .HasColumnType("datetime");
 
             modelBuilder.Entity<ReportProblem>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<ActionOfWork>()
                 .Property(e => e.CreatedAt)
                 .HasColumnType("datetime");
         }

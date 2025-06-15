@@ -1,6 +1,6 @@
-﻿@model List<Role>
+﻿@model List<TableOrSeat>
 @{
-    ViewData["Title"] = "Roles";
+    ViewData["Title"] = "Mesas y Barras";
 }
 
 <!DOCTYPE html>
@@ -72,10 +72,10 @@
     <div class="container">
         <div class="row pt-4 pb-3">
             <div class="col-6">
-                <h2 class="text-black">Lista de Roles</h2>
+                <h2 class="text-black">Lista de Mesas y Barras</h2>
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Roles" asp-action="Create" class="btn btn-primary">Crear Rol</a>
+                <a asp-controller="TablesAndSeats" asp-action="Create" class="btn btn-primary">Crear Mesa/Barra</a>
             </div>
         </div>
         <table aria-label="Lista de Roles">
@@ -83,25 +83,25 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Descripción</th>
+                    <th scope="col">Ocupantes</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Fecha de Creación</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model != null && Model.Any())
                 {
-                    foreach (var item in Model.OrderBy(item => item.Description))
+                    foreach (var item in Model.OrderBy(item => item.Name))
                     {
                         <tr>
                             <td>@item.Id</td>
-                            <td>@item.Description</td>
+                            <td>@item.Name</td>
+                            <td>@item.Occupants</td>
                             <td>@item.Status</td>
-                            <td>@item.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Roles" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary" style="width:100px">Editar</a>
-                                    <a asp-controller="Roles" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="width:100px">Borrar</a>
+                                    <a asp-controller="TablesAndSeats" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary" style="width:100px">Editar</a>
+                                    <a asp-controller="TablesAndSeats" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="width:100px">Borrar</a>
                                 </div>
                             </td>
                         </tr>
