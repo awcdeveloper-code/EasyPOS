@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EasyPOS BackOffice</title>
     <script type="importmap"></script>
+    <link rel="icon" href="/EasyPOS.ico">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 </head>
@@ -19,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" asp-controller="Saloon" asp-action="Index">Salón</a>
+                            <a class="nav-link text-light" asp-controller="Saloon" asp-action="SaloonStatus">Estado del Salón</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Configuración</a>
@@ -34,7 +35,7 @@
                                 <a class="dropdown-item" asp-controller="Promotions" asp-action="Index">Promociones</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-controller="TablesAndSeats" asp-action="Index">Mesas y Barras</a>
-                                <a class="dropdown-item" asp-controller="Customers" asp-action="Index">Clientes Frecuentes</a>
+                                <a class="dropdown-item" asp-controller="FrecuentCustomers" asp-action="Index">Clientes Frecuentes</a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-controller="Config" asp-action="Log">Bitácora</a>
                             </div>

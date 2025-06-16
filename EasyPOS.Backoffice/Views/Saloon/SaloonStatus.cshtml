@@ -1,0 +1,147 @@
+﻿@model List<TableOrSeat>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@* Import Google Material Icons *@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+<style>
+    /* Root variables for colors and spacing */
+    :root {
+        --primary-color: #0891b2;
+        --text-color: #222222;
+        --background-color: #ffffff;
+        --border-color: #cccccc;
+        --border-radius: 12px;
+        --spacing-s: 12px;
+        --spacing-m: 20px;
+        --spacing-l: 32px;
+        --font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Container grid */
+    .two-column-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--spacing-l);
+        max-width: 900px;
+        margin: 0 auto;
+        padding: var(--spacing-l);
+        background: var(--background-color);
+        border-radius: var(--border-radius);
+        box-shadow: 0 8px 16px rgba(8, 145, 178, 0.15);
+        font-family: var(--font-family);
+        color: var(--text-color);
+    }
+
+    /* Each column styling */
+    .form-column {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-m);
+    }
+
+    /* Form field wrapper */
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Label styling */
+    label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    /* Material icons in labels */
+    .material-icons {
+        font-size: 20px;
+        color: var(--primary-color);
+        vertical-align: middle;
+    }
+
+    /* Responsive: stack columns on small screens */
+    @@media (max-width: 768px) {
+        .two-column-form {
+            grid-template-columns: 1fr;
+            gap: var(--spacing-m);
+            padding: var(--spacing-m);
+        }
+    }
+</style>
+
+<form class="two-column-form" aria-label="Crear Producto">
+    <div class="form-column" role="group" aria-labelledby="leftColumnLegend">
+        <legend id="leftColumnLegend" class="sr-only">DISPONIBLES</legend>
+        <table aria-label="Disponibles">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col" style="width:150px">Nombre</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model.OrderBy(item => item.Name).Where(x => x.Status == "DISPONIBLE"))
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a asp-controller="Saloon" asp-action="Assign" asp-route-id="@item.Id" class="btn btn-primary">Asignar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" style="text-align:center; color:red;"><strong>NO HAY DATOS DISPONIBLES</strong></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="form-column" role="group" aria-labelledby="rightColumnLegend">
+        <legend id="rightColumnLegend" class="sr-only">OCUPADAS</legend>
+        <table aria-label="Disponibles">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col" style="width:150px">Nombre</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var item in Model.OrderBy(item => item.Name).Where(x => x.Status != "DISPONIBLE"))
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a asp-controller="Saloon" asp-action="Available" asp-route-id="@item.Id" class="btn btn-danger">Disponible</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3" style="text-align:center; color:red;"><strong>NO HAY DATOS DISPONIBLES</strong></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</form>

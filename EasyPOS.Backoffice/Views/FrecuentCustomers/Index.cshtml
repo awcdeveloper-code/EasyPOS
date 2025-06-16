@@ -1,9 +1,9 @@
-﻿@model List<Role>
+﻿@model List<FrecuentCustomer>
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @* Import Google Material Icons *@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 @{
-    ViewData["Title"] = "Roles";
+    ViewData["Title"] = "Clientes Frecuentes";
 }
 
 <!DOCTYPE html>
@@ -87,11 +87,11 @@
     <div class="container">
         <div class="row pt-4 pb-3">
             <div class="col-6">
-                <h2 class="text-black">Lista de Roles</h2>
+                <h2 class="text-black">Lista de Clientes Frecuentes</h2>
             </div>
             <div class="col-6 text-end">
-                <a asp-controller="Roles" asp-action="Create" class="btn btn-primary icon-button">
-                    <span class="material-icons" aria-hidden="true">settings</span>Crear Rol
+                <a asp-controller="FrecuentCustomers" asp-action="Create" class="btn btn-primary icon-button">
+                    <span class="material-icons" aria-hidden="true">person</span>Crear Cliente Frecuente
                 </a>
                 <a asp-controller="Home" asp-action="Index" class="btn btn-primary icon-button">
                     <span class="material-icons" aria-hidden="true">home</span>Regresar
@@ -102,26 +102,30 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Descripción</th>
+                    <th scope="col" style="width:300px">Nombre</th>
+                    <th scope="col" style="width:100px">No. Teléfono</th>
+                    <th scope="col" style="width:300px">Correo Electrónico</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Fecha de Creación</th>
+                    <th scope="col" style="width:100px">Fecha de Creación</th>
                     <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 @if (Model != null && Model.Any())
                 {
-                    foreach (var item in Model.OrderBy(item => item.Description))
+                    foreach (var item in Model.OrderBy(item => item.Name))
                     {
                         <tr>
                             <td>@item.Id</td>
-                            <td>@item.Description</td>
+                            <td>@item.Name</td>
+                            <td>@item.PhoneNumber</td>
+                            <td>@item.eMailAddress</td>
                             <td>@item.Status</td>
                             <td>@item.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Roles" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary" style="width:100px">Editar</a>
-                                    <a asp-controller="Roles" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="width:100px">Borrar</a>
+                                    <a asp-controller="FrecuentCustomers" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary" style="width:100px">Editar</a>
+                                    <a asp-controller="FrecuentCustomers" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="width:100px">Borrar</a>
                                 </div>
                             </td>
                         </tr>

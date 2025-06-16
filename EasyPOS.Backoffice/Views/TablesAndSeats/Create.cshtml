@@ -7,6 +7,14 @@
         </div>
         <div asp-validation-summary="None"></div>
         <div class="mb-3 row p-1">
+            <label asp-for="Type" class="p-0"></label>
+            <select asp-for="Type" class="form-control" style="width: 100px;">
+                <option value="MESA">MESA</option>
+                <option value="BARRA">BARRA</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
             <label asp-for="Name" class="p-0"></label>
             <input asp-for="Name" class="form-control" style="width:300px" />
             <span asp-validation-for="Name" class="text-danger"></span>
@@ -19,8 +27,8 @@
         <div class="mb-3 row p-1">
             <label asp-for="Status" class="p-0" />
             <select asp-for="Status" class="form-control" style="width: 150px;">
-                <option value="ACTIVO">ACTIVO</option>
-                <option value="INACTIVO">INACTIVO</option>
+                <option value="DISPONIBLE">DISPONIBLE</option>
+                <option value="OCUPADA">OCUPADA</option>
             </select>
             <span asp-validation-for="Status" class="text-danger"></span>
         </div>

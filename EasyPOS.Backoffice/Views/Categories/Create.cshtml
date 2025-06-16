@@ -8,14 +8,14 @@
         <div asp-validation-summary="None"></div>
         <div class="mb-3 row p-1">
             <label asp-for="Description" class="p-0"></label>
-            <input asp-for="Description" class="form-control" />
+            <input asp-for="Description" class="form-control" style="width: 200px;" />
             <span asp-validation-for="Description" class="text-danger"></span>
         </div>
         <div class="mb-3 row p-1">
             <label asp-for="Status" class="p-0" />
             <select asp-for="Status" class="form-control" style="width: 150px;">
-                <option value="Activo">Activo</option>
-                <option value="Inactivo">Inactivo</option>
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
             </select>
             <span asp-validation-for="Status" class="text-danger"></span>
         </div>

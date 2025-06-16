@@ -1,0 +1,46 @@
+﻿@model FrecuentCustomer
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Borrar Cliente Frecuente</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="None"></div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Id" class="p-0"></label>
+            <input asp-for="Id" class="form-control" style="width:100px" readonly />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Name" class="p-0"></label>
+            <input asp-for="Name" class="form-control" style="width:300px" readonly/>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="PhoneNumber" class="p-0"></label>
+            <input asp-for="PhoneNumber" class="form-control" readonly/>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="eMailAddress" class="p-0"></label>
+            <input asp-for="eMailAddress" class="form-control" style="width:300px" readonly />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="LimitOfCredit" class="p-0"></label>
+            <input asp-for="LimitOfCredit" class="form-control" readonly />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="FreeOfCharge" class="p-0" />
+            <input asp-for="FreeOfCharge" class="form-control" readonly />
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Status" class="p-0" />
+            <input asp-for="Status" class="form-control" readonly />
+        </div>
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Crear</button>
+            </div>
+            <div class="col-3 col-md-3">
+                <a asp-controller="FrecuentCustomers" asp-action="Index" class="btn btn-outline-secondary form-control border">Regresar</a>
+            </div>
+        </div>
+    </div>
+</form>
