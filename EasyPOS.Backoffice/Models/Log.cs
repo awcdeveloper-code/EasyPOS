@@ -5,9 +5,18 @@ namespace EasyPOS.Backoffice.Models
     public class Log
     {
         [Key]
+        [Display(Name = "Código")]
         public int Id { get; set; }
+
+        [MaxLength(30)]
+        [Display(Name = "Colaborador")]
         public int UserId { get; set; }
+
+        [Display(Name = "Fecha/Hora del Evento")]
         public DateTime EntryDatetime { get; set; }
+
+        [MaxLength(255)]
+        [Display(Name = "Descripción del Evento")]
         public int Action { get; set; }
     }
 }

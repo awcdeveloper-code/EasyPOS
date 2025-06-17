@@ -16,6 +16,8 @@ namespace EasyPOS.Backoffice.Data
         public DbSet<NewFeatureRequest> NewFeatureRequests { get; set; }
         public DbSet<ReportProblem> ReportProblems { get; set; }
         public DbSet<FrecuentCustomer> FrecuentCustomers { get; set; }
+        public DbSet<Bucket> Buckets { get; set; }
+        public DbSet<Promotion> Promotions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +42,8 @@ namespace EasyPOS.Backoffice.Data
             modelBuilder.Entity<ReportProblem>().HasKey(u => u.Id);
 
             modelBuilder.Entity<FrecuentCustomer>().HasKey(u => u.Id);
+
+            modelBuilder.Entity<Bucket>().HasKey(u => u.Id);
 
             // adjust columns type
             modelBuilder.Entity<User>()
@@ -80,6 +84,14 @@ namespace EasyPOS.Backoffice.Data
 
             modelBuilder.Entity<FrecuentCustomer>()
                 .Property(e => e.LastVisit)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Bucket>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Promotion>()
+                .Property(e => e.CreatedAt)
                 .HasColumnType("datetime");
         }
     }
