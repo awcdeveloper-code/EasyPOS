@@ -120,8 +120,12 @@
                             <td>@item.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Roles" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary" style="width:100px">Editar</a>
-                                    <a asp-controller="Roles" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="width:100px">Borrar</a>
+                                    <a asp-controller="Roles" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary icon-button mx-2">
+                                        <span class="material-icons" aria-hidden="true">edit</span>Editar
+                                    </a>
+                                    <a asp-controller="Roles" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger icon-button mx-2">
+                                        <span class="material-icons" aria-hidden="true">delete_forever</span>Borrar
+                                    </a>
                                 </div>
                             </td>
                         </tr>

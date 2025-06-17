@@ -94,7 +94,8 @@
             </div>
             <div class="col-6 text-end">
                 <a asp-controller="Users" asp-action="Create" class="btn btn-primary icon-button">
-                    <span class="material-icons" aria-hidden="true">person</span>Crear Usuario</a>
+                    <span class="material-icons" aria-hidden="true">person_add</span>Crear Usuario
+                </a>
                 <a asp-controller="Home" asp-action="Index" class="btn btn-primary icon-button">
                     <span class="material-icons" aria-hidden="true">home</span> Regresar
                 </a>
@@ -124,8 +125,12 @@
                             <td>@item.Status</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Users" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary" style="width:100px">Editar</a>
-                                    <a asp-controller="Users" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="width:100px">Borrar</a>
+                                    <a asp-controller="Users" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary icon-button mx-2">
+                                        <span class="material-icons" aria-hidden="true">edit</span>Editar
+                                    </a>
+                                    <a asp-controller="Users" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger icon-button mx-2">
+                                        <span class="material-icons" aria-hidden="true">delete_forever</span>Borrar
+                                    </a>
                                 </div>
                             </td>
                         </tr>
