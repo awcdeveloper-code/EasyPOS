@@ -29,7 +29,10 @@ Log.Logger = new LoggerConfiguration()
    .CreateLogger();
 
 // Use Serilog for logging
-builder.Host.UseSerilog();
+builder.Host.UseSerilog((context, services, configuration) => configuration
+    .ReadFrom.Configuration(context.Configuration)
+    .ReadFrom.Services(services)
+    .Enrich.FromLogContext());
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
