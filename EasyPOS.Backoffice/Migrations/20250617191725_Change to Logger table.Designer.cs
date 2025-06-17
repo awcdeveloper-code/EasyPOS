@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyPOS.Backoffice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250616142014_First Migration")]
-    partial class FirstMigration
+    [Migration("20250617191725_Change to Logger table")]
+    partial class ChangetoLoggertable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -56,6 +56,36 @@ namespace EasyPOS.Backoffice.Migrations
                     b.ToTable("ActionsOfWork");
                 });
 
+            modelBuilder.Entity("EasyPOS.Backoffice.Models.Bucket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BucketContent")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Buckets");
+                });
+
             modelBuilder.Entity("EasyPOS.Backoffice.Models.Category", b =>
                 {
                     b.Property<int>("Id")
@@ -82,6 +112,51 @@ namespace EasyPOS.Backoffice.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("EasyPOS.Backoffice.Models.FrecuentCustomer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("FreeOfCharge")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.Property<DateTime>("LastVisit")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("LimitOfCredit")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("eMailAddress")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FrecuentCustomers");
+                });
+
             modelBuilder.Entity("EasyPOS.Backoffice.Models.Log", b =>
                 {
                     b.Property<int>("Id")
@@ -90,14 +165,20 @@ namespace EasyPOS.Backoffice.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Action")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EntryDatetime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<string>("EntryDescrption")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("EntryType")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("UserId")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 
@@ -177,6 +258,36 @@ namespace EasyPOS.Backoffice.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("EasyPOS.Backoffice.Models.Promotion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("BucketContent")
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Promotions");
                 });
 
             modelBuilder.Entity("EasyPOS.Backoffice.Models.ReportProblem", b =>
@@ -273,6 +384,11 @@ namespace EasyPOS.Backoffice.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("nvarchar(5)");
 
                     b.HasKey("Id");
 

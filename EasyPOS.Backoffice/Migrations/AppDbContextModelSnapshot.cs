@@ -162,16 +162,20 @@ namespace EasyPOS.Backoffice.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Action")
-                        .HasMaxLength(255)
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EntryDatetime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
+                    b.Property<string>("EntryDescrption")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("EntryType")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
+                    b.Property<string>("UserId")
                         .HasMaxLength(30)
-                        .HasColumnType("int");
+                        .HasColumnType("nvarchar(30)");
 
                     b.HasKey("Id");
 

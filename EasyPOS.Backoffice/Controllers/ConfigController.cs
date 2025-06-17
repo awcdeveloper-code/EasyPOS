@@ -14,46 +14,14 @@ namespace EasyPOS.Backoffice.Controllers
             _appDbContext = appDbContext;
             _logger = logger;
         }
-        public IActionResult Roles()
-        {
-            return View();
-        }
-        public IActionResult Users()
-        {
-            return View();
-        }
-        public IActionResult Actions()
-        {
-            return View();
-        }
         public IActionResult Log()
         {
-            return View();
-        }
-        public IActionResult Categories()
-        {
-            return View();
-        }
+            _logger.LogInformation("ConfigController:Log called.");
 
-        public IActionResult Products()
-        {
-            return View();
-        }
-        public IActionResult Buckets()
-        {
-            return View();
-        }
-        public IActionResult Promotions()
-        {
-            return View();
-        }
-        public IActionResult Saloon()
-        {
-            return View();
-        }
-        public IActionResult VIPCustomers()
-        {
-            return View();
+            LogViewModel logViewModel = new LogViewModel();
+            logViewModel.LogList = _appDbContext.Logger.ToList();
+
+            return View(logViewModel);
         }
     }
 }

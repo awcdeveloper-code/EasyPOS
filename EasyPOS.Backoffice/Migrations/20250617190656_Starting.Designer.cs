@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyPOS.Backoffice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250617171616_Added Promotions table")]
-    partial class AddedPromotionstable
+    [Migration("20250617190656_Starting")]
+    partial class Starting
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -165,13 +165,19 @@ namespace EasyPOS.Backoffice.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Action")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("EntryDatetime")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("EntryDescrption")
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("EntryType")
+                        .HasMaxLength(3)
+                        .HasColumnType("nvarchar(3)");
+
                     b.Property<int>("UserId")
+                        .HasMaxLength(30)
                         .HasColumnType("int");
 
                     b.HasKey("Id");

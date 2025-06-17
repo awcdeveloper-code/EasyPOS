@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EasyPOS.Backoffice.Migrations
 {
     /// <inheritdoc />
-    public partial class ChangedatatypeforStatusinTableOrSeatentity : Migration
+    public partial class Starting : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,6 +28,22 @@ namespace EasyPOS.Backoffice.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Buckets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    BucketContent = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Buckets", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
@@ -43,14 +59,35 @@ namespace EasyPOS.Backoffice.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "FrecuentCustomers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: true),
+                    eMailAddress = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    LimitOfCredit = table.Column<int>(type: "int", nullable: false),
+                    FreeOfCharge = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
+                    LastVisit = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FrecuentCustomers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Logger",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
+                    EntryType = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
+                    UserId = table.Column<int>(type: "int", maxLength: 30, nullable: false),
                     EntryDatetime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Action = table.Column<int>(type: "int", nullable: false)
+                    EntryDescrption = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -94,6 +131,22 @@ namespace EasyPOS.Backoffice.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Promotions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Description = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
+                    BucketContent = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Promotions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ReportProblems",
                 columns: table => new
                 {
@@ -132,6 +185,7 @@ namespace EasyPOS.Backoffice.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Type = table.Column<string>(type: "nvarchar(5)", maxLength: 5, nullable: false),
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Occupants = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
@@ -169,7 +223,13 @@ namespace EasyPOS.Backoffice.Migrations
                 name: "ActionsOfWork");
 
             migrationBuilder.DropTable(
+                name: "Buckets");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "FrecuentCustomers");
 
             migrationBuilder.DropTable(
                 name: "Logger");
@@ -179,6 +239,9 @@ namespace EasyPOS.Backoffice.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "Promotions");
 
             migrationBuilder.DropTable(
                 name: "ReportProblems");

@@ -8,15 +8,19 @@ namespace EasyPOS.Backoffice.Models
         [Display(Name = "Código")]
         public int Id { get; set; }
 
+        [MaxLength(3)]
+        [Display(Name = "Tipo")]
+        public string? EntryType { get; set; }
+
         [MaxLength(30)]
         [Display(Name = "Colaborador")]
-        public int UserId { get; set; }
+        public string ? UserId { get; set; }
 
         [Display(Name = "Fecha/Hora del Evento")]
         public DateTime EntryDatetime { get; set; }
 
         [MaxLength(255)]
         [Display(Name = "Descripción del Evento")]
-        public int Action { get; set; }
+        public string? EntryDescrption { get; set; }
     }
 }
