@@ -14,6 +14,7 @@ namespace EasyPOS.Backoffice.Controllers
             _appDbContext = appDbContext;
             _logger = logger;
         }
+        
         public IActionResult SaloonStatus()
         {
             _logger.LogInformation("SaloonController:SaloonStatus called.");
@@ -59,6 +60,18 @@ namespace EasyPOS.Backoffice.Controllers
             TempData["success"] = "Mesa/Barra asignada exitosamente.";
 
             return RedirectToAction("SaloonStatus");
+        }
+
+        public IActionResult UpdateTicket(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            TableOrSeat ts = _appDbContext.TablesOrSeats.Find(id)!;
+
+            return View(ts);
         }
     }
 }

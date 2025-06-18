@@ -139,21 +139,29 @@ namespace EasyPOS.Backoffice.Controllers
 
             Product prod = _appDbContext.Products.Find(id)!;
 
+            ProductViewModel model = new ProductViewModel();
+            model.Product = prod;
+
             if (prod == null)
             {
                 return NotFound();
             }
 
-            return View(prod);
+            return View(model);
         }
 
         [HttpPost]
-        public IActionResult Delete(Product prod)
+        public IActionResult Delete(ProductViewModel prodView)
         {
             _logger.LogInformation("ProductsController:DeletePOST called.");
 
+            ModelState.Remove("Categories");
+
             if (ModelState.IsValid)
             {
+                Product prod = new Product();
+                prod = prodView.Product;
+
                 _appDbContext.Products.Remove(prod);
                 _appDbContext.SaveChanges();
                 TempData["success"] = "Producto borrado exitosamente.";

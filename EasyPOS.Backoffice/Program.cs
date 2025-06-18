@@ -2,6 +2,9 @@ using Microsoft.EntityFrameworkCore;
 using Serilog;
 using EasyPOS.Backoffice.Data;
 
+// Enable Serilog internal debugging
+Serilog.Debugging.SelfLog.Enable(msg => Console.WriteLine(msg));
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<AppDbContext>(options =>

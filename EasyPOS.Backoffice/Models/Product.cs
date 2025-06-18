@@ -36,6 +36,9 @@ namespace EasyPOS.Backoffice.Models
         [Required(ErrorMessage = "El estado es un requisito.")]
         [Display(Name = "Estado")]
         public string? Status { get; set; } = string.Empty;
+        public bool Hide { get; set; } = false;
+        public bool Bucket { get; set; } = false;
+        public bool Promotion { get; set; } = false;
         public DateTime CreatedAt { get; set; } = DateTime.Now;
     }
 }

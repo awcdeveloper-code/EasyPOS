@@ -99,7 +99,7 @@
         }
 
             button[type="submit"]:hover {
-                background-color: #4338ca; /* indigo-700 */
+                background-color: #4338ca;
                 box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
             }
 
@@ -197,7 +197,7 @@
 <body>
     <div class="container" role="main">
         <h1>Bitácora de Eventos</h1>
-        <form method="get" class="filter-form" aria-label="Filter events by date range">
+        <form method="post" class="filter-form" aria-label="Filter events by date range">
             <div class="filter-group">
                 <label for="EndDate">Fecha Inicial</label>
                 <input type="date"
@@ -215,7 +215,7 @@
                        aria-required="true" />
             </div>
             <div class="filter-group" style="flex: 0 0 auto;">
-                <button type="submit" aria-label="Search events">
+                <button type="submit" class="btn btn-primary form-control" aria-label="Search events">
                     <span class="material-icons" aria-hidden="true">search</span> Buscar
                 </button>
             </div>

@@ -58,9 +58,6 @@
 
     /* Input styling */
     input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="number"],
     select,
     textarea {
         padding: 10px 12px;
@@ -70,16 +67,13 @@
         transition: border-color 0.3s ease;
     }
 
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="password"]:focus,
-        input[type="number"]:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 8px rgba(8, 145, 178, 0.4);
-        }
+    input[type="text"]:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 8px rgba(8, 145, 178, 0.4);
+    }
 
     /* Checkbox group */
     .checkbox-group {
@@ -116,6 +110,7 @@
     /* Responsive: stack columns on small screens */
     @@media (max-width: 768px) {
         .two-column-form
+
         {
             grid-template-columns: 1fr;
             gap: var(--spacing-m);
@@ -124,72 +119,66 @@
     }
 </style>
 
-<form class="two-column-form" aria-label="Crear Producto">
+<form method="post" class="two-column-form" aria-label="Crear Producto">
     <div class="form-column" role="group" aria-labelledby="leftColumnLegend">
         <legend id="leftColumnLegend" class="sr-only">Crear Producto</legend>
         <div asp-validation-summary="None"></div>
         <div class="form-group">
-            <label asp-for="Product.Description"><span class="material-icons" aria-hidden="true">person</span> Nombre</label>
+            <label asp-for="Product.Description"><span class="material-icons" aria-hidden="true">topic</span> Nombre</label>
             <input asp-for="Product.Description" placeholder="Ingrese el nombre" required aria-required="true" />
             <span asp-validation-for="Product.Description" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Product.Category"><span class="material-icons" aria-hidden="true">email</span> Categoría</label>
+            <label asp-for="Product.Category"><span class="material-icons" aria-hidden="true">insert_link</span> Categoría</label>
             <select asp-for="Product.Category" asp-items="Model.Categories" class="form-control" style="width: 250px;"></select>
             <span asp-validation-for="Product.Category" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Product.Cost"><span class="material-icons" aria-hidden="true">person</span> Costo</label>
+            <label asp-for="Product.Cost"><span class="material-icons" aria-hidden="true">request_page</span> Costo</label>
             <input asp-for="Product.Cost" required aria-required="true" style="width: 150px;" />
             <span asp-validation-for="Product.Cost" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Product.Price"><span class="material-icons" aria-hidden="true">person</span> Precio</label>
+            <label asp-for="Product.Price"><span class="material-icons" aria-hidden="true">request_page</span> Precio</label>
             <input asp-for="Product.Price" required aria-required="true" style="width: 150px;" />
             <span asp-validation-for="Product.Price" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <label asp-for="Product.Stock"><span class="material-icons" aria-hidden="true">person</span> Disponibles</label>
+            <label asp-for="Product.Stock"><span class="material-icons" aria-hidden="true">fact_check</span> Disponibles</label>
             <input asp-for="Product.Stock" required aria-required="true" style="width: 150px;" />
             <span asp-validation-for="Product.Stock" class="text-danger"></span>
         </div>
+        <div class="form-group">
+            <label asp-for="Product.Status"><span class="material-icons" aria-hidden="true">feedback</span> Estado</label>
+            <select asp-for="Product.Status" class="form-control" style="width: 150px;">
+                <option value="ACTIVO">ACTIVO</option>
+                <option value="INACTIVO">INACTIVO</option>
+            </select>
+            <span asp-validation-for="Product.Status" class="text-danger"></span>
+        </div>
         <div class="row">
-            <div class="col-3 col-md-3">
-                <button type="submit" class="btn btn-primary form-control">Crear</button>
+            <div class="col-6 col-md-6">
+                <button type="submit" id="checkButton" class="btn btn-primary form-control">Crear</button>
             </div>
-            <div class="col-3 col-md-3">
+            <div class="col-6 col-md-6">
                 <a asp-controller="Products" asp-action="Index" class="btn btn-outline-secondary form-control border">Regresar</a>
             </div>
         </div>
     </div>
-
     <div class="form-column" role="group" aria-labelledby="rightColumnLegend">
-        <legend id="rightColumnLegend" class="sr-only">Caracterísicas Especiales</legend>
+        <legend id="rightColumnLegend" class="sr-only">Características Especiales</legend>
         <div class="checkbox-group">
-            <!-- Checkbox 1 -->
-            <label class="checkbox-label" for="newsUpdates">
-                <input type="checkbox" id="newsUpdates" name="Preferences" value="NewsUpdates" />
-                <span class="material-icons" aria-hidden="true">feed</span> Activo
+            <label class="checkbox-label" for="Hide">
+                <input asp-for="Product.Hide" id="Hide" />
+                <span class="material-icons" aria-hidden="true">visibility_off</span> Ocultar en el menú
             </label>
-            <!-- Checkbox 2 -->
-            <label class="checkbox-label" for="breakingNews">
-                <input type="checkbox" id="breakingNews" name="Preferences" value="BreakingNews" />
-                <span class="material-icons" aria-hidden="true">priority_high</span> Ocultar en el menú
+            <label class="checkbox-label" for="Bucket">
+                <input asp-for="Product.Bucket" id="Bucket" />
+                <span class="material-icons" aria-hidden="true">sports_bar</span> Balde
             </label>
-            <!-- Checkbox 3 -->
-            <label class="checkbox-label" for="newsletter">
-                <input type="checkbox" id="newsletter" name="Preferences" value="Newsletter" />
-                <span class="material-icons" aria-hidden="true">mail_outline</span> Balde
-            </label>
-            <!-- Checkbox 4 -->
-            <label class="checkbox-label" for="personalization">
-                <input type="checkbox" id="personalization" name="Preferences" value="Personalization" />
-                <span class="material-icons" aria-hidden="true">settings</span> Promoción
-            </label>
-            <!-- Checkbox 5 -->
-            <label class="checkbox-label" for="offlineReading">
-                <input type="checkbox" id="offlineReading" name="Preferences" value="OfflineReading" />
-                <span class="material-icons" aria-hidden="true">download</span> Por definir
+            <label class="checkbox-label" for="Promotion">
+                <input asp-for="Product.Promotion" id="Promotion" />
+                <span class="material-icons" aria-hidden="true">card_giftcard</span> Promoción
             </label>
         </div>
     </div>

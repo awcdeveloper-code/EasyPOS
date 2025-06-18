@@ -18,6 +18,7 @@ namespace EasyPOS.Backoffice.Data
         public DbSet<FrecuentCustomer> FrecuentCustomers { get; set; }
         public DbSet<Bucket> Buckets { get; set; }
         public DbSet<Promotion> Promotions { get; set; }
+        public DbSet<Ticket> Tickets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -92,6 +93,14 @@ namespace EasyPOS.Backoffice.Data
 
             modelBuilder.Entity<Promotion>()
                 .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Ticket>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Ticket>()
+                .Property(e => e.ClosedAt)
                 .HasColumnType("datetime");
         }
     }
