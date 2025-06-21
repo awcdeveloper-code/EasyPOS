@@ -19,11 +19,13 @@ namespace EasyPOS.Backoffice.Models
     {
         public int Id { get; set; } = 0;
         public string Name { get; set; } = string.Empty;
+        public int Price { get; set; } = 0;
         public string ImageUrl { get; set; } = "https://placehold.co/64x64/444444/ffffff?text=Sin+Imagen";
     }
     public class SelectedItem
     {
-        public int id { get; set; }
-        public int quantity { get; set; }
+        public int id { get; set; } = 0;
+        public int quantity { get; set; } = 0;
+        public int price { get; set; } = 0;
     }
 }

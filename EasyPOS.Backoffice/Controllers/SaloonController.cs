@@ -25,9 +25,21 @@ namespace EasyPOS.Backoffice.Controllers
             return View(tblseaList);
         }
 
-        public IActionResult Assign(int? id)
+        public IActionResult Assign(int id)
         {
             _logger.LogInformation("SaloonController:Assign called.");
+
+            Ticket ticket = new Ticket();
+            ticket.TicketDate = DateTime.Now.ToString("yyyyMMdd");
+            ticket.CustomerId = id;
+
+            Guid guid = Guid.NewGuid();
+
+            ticket.GUID = guid.ToString();
+            ticket.CreatedAt = DateTime.Now;
+
+            _appDbContext.Tickets.Add(ticket);
+            _appDbContext.SaveChanges();
 
             TableOrSeat tblsea = _appDbContext.TablesOrSeats.Find(id)!;
 
@@ -39,6 +51,7 @@ namespace EasyPOS.Backoffice.Controllers
             tblsea.Status = "OCUPADA";
             _appDbContext.TablesOrSeats.Update(tblsea);
             _appDbContext.SaveChanges();
+
             TempData["success"] = "Mesa/Barra asignada exitosamente.";
 
             return RedirectToAction("SaloonStatus");
@@ -99,6 +112,7 @@ namespace EasyPOS.Backoffice.Controllers
                     ProductList pList = new ProductList();
                     pList.Id = prod.Id;
                     pList.Name = prod.Description!;
+                    pList.Price = prod.Price;
                     productsList.Add(pList);
                 }
 
@@ -119,6 +133,21 @@ namespace EasyPOS.Backoffice.Controllers
             }
 
             List<SelectedItem> selectedItems = JsonSerializer.Deserialize<List<SelectedItem>>(selectedItemsJson);
+
+            foreach(SelectedItem si in selectedItems!)
+            {
+                TicketDetail td = new TicketDetail();
+
+                td.GUID = string.Empty; // need to be fixed
+                td.ProdId = si.id;
+                td.Quantity = si.quantity;
+                td.UnitPrice = si.price / td.Quantity;
+                td.TotalPrice = si.price;
+
+                _appDbContext.TicketDetails.Add(td);
+            }
+
+            _appDbContext.SaveChanges();
 
             return RedirectToAction("SaloonStatus");
         }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EasyPOS.Backoffice.Migrations
 {
     /// <inheritdoc />
-    public partial class FirstmigrationagainfromHome : Migration
+    public partial class Firstcmigrationagain : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -201,6 +201,24 @@ namespace EasyPOS.Backoffice.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TicketDetails",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    GUID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProdId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    UnitPrice = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TicketDetails", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Tickets",
                 columns: table => new
                 {
@@ -274,6 +292,9 @@ namespace EasyPOS.Backoffice.Migrations
 
             migrationBuilder.DropTable(
                 name: "TablesOrSeats");
+
+            migrationBuilder.DropTable(
+                name: "TicketDetails");
 
             migrationBuilder.DropTable(
                 name: "Tickets");

@@ -34,14 +34,14 @@
             flex-grow: 1;
             padding: 24px;
             gap: 24px;
-            max-width: 1200px;
+            max-width: 1500px;
             margin: 0 auto;
             flex-wrap: wrap;
             min-height: 500px;
         }
 
         .panel-left {
-            flex: 0 0 280px;
+            flex: 0 0 300px; /* Adjusted width */
             background: #f9fafb;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.08);
@@ -51,14 +51,14 @@
             align-items: stretch;
         }
 
-            .panel-left h2 {
-                font-weight: 700;
-                font-size: 1.5rem;
-                margin-bottom: 16px;
-                color: #111827;
-                border-bottom: 1px solid #e5e7eb;
-                padding-bottom: 8px;
-            }
+        .panel-left h2 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: #111827;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
 
         .category-button {
             background: #e0e7ff;
@@ -77,17 +77,17 @@
             user-select: none;
         }
 
-            .category-button:hover,
-            .category-button:focus {
-                background: #c7d2fe;
-                outline: none;
-            }
+        .category-button:hover,
+        .category-button:focus {
+            background: #c7d2fe;
+            outline: none;
+        }
 
-            .category-button.active {
-                background: darkblue;
-                color: #e0e7ff;
-                box-shadow: 0 0 10px #4338caaa;
-            }
+        .category-button.active {
+            background: darkblue;
+            color: #e0e7ff;
+            box-shadow: 0 0 10px #4338caaa;
+        }
 
         .panel-middle {
             flex: 1 1 auto;
@@ -102,14 +102,14 @@
             overflow-y: auto;
         }
 
-            .panel-middle h2 {
-                font-weight: 700;
-                font-size: 1.5rem;
-                margin-bottom: 16px;
-                color: #111827;
-                border-bottom: 1px solid #e5e7eb;
-                padding-bottom: 8px;
-            }
+        .panel-middle h2 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: #111827;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
 
         table.middle-table {
             width: 100%;
@@ -117,38 +117,38 @@
             border-spacing: 0 10px;
         }
 
-            table.middle-table th,
-            table.middle-table td {
-                text-align: left;
-                padding: 12px 8px;
-                vertical-align: middle;
-            }
+        table.middle-table th,
+        table.middle-table td {
+            text-align: left;
+            padding: 12px 8px;
+            vertical-align: middle;
+        }
 
-            table.middle-table th {
-                font-weight: 600;
-                font-size: 1rem;
-                color: #4b5563;
-                border-bottom: 2px solid #d1d5db;
-            }
+        table.middle-table th {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4b5563;
+            border-bottom: 2px solid #d1d5db;
+        }
 
-            table.middle-table tbody tr {
-                background: #ffffff;
-                border-radius: 12px;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-                cursor: pointer;
-                transition: background-color 0.2s ease;
-                user-select: none;
-            }
+        table.middle-table tbody tr {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            user-select: none;
+        }
 
-                table.middle-table tbody tr:hover {
-                    background: #e0e7ff;
-                }
+        table.middle-table tbody tr:hover {
+            background: #e0e7ff;
+        }
 
-                table.middle-table tbody tr.selected {
-                    background: #4338ca;
-                    color: #e0e7ff;
-                    box-shadow: 0 0 10px #4338caaa;
-                }
+        table.middle-table tbody tr.selected {
+            background: #4338ca;
+            color: #e0e7ff;
+            box-shadow: 0 0 10px #4338caaa;
+        }
 
         .item-image {
             width: 48px;
@@ -165,53 +165,55 @@
         }
 
         .panel-right {
-            flex: 0 0 320px;
+            flex: 0 0 450px; /* Adjusted width */
             background: #f9fafb;
             border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.08);
             padding: 16px;
             display: flex;
             flex-direction: column;
-            min-width: 280px;
+            min-width: 300px;
             max-height: 600px;
             overflow-y: auto;
         }
 
-            .panel-right h2 {
-                font-weight: 700;
-                font-size: 1.5rem;
-                margin-bottom: 16px;
-                color: #111827;
-                border-bottom: 1px solid #e5e7eb;
-                padding-bottom: 8px;
-            }
+        .panel-right h2 {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: #111827;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
 
         table.right-table {
             width: 100%;
+            min-width: 400px;
             border-collapse: separate;
             border-spacing: 0 10px;
+            table-layout: fixed;
         }
 
-            table.right-table th,
-            table.right-table td {
-                text-align: left;
-                padding: 12px 8px;
-                vertical-align: middle;
-            }
+        table.right-table th,
+        table.right-table td {
+            text-align: left;
+            padding: 12px 8px;
+            vertical-align: middle;
+        }
 
-            table.right-table th {
-                font-weight: 600;
-                font-size: 1rem;
-                color: #4b5563;
-                border-bottom: 2px solid #d1d5db;
-            }
+        table.right-table th {
+            font-weight: 600;
+            font-size: 1rem;
+            color: #4b5563;
+            border-bottom: 2px solid #d1d5db;
+        }
 
-            table.right-table tbody tr {
-                background: #ffffff;
-                border-radius: 12px;
-                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-                user-select: none;
-            }
+        table.right-table tbody tr {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            user-select: none;
+        }
 
         .quantity-input {
             width: 60px;
@@ -223,11 +225,11 @@
             -moz-appearance: textfield;
         }
 
-            .quantity-input::-webkit-inner-spin-button,
-            .quantity-input::-webkit-outer-spin-button {
-                -webkit-appearance: none;
-                margin: 0;
-            }
+        .quantity-input::-webkit-inner-spin-button,
+        .quantity-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
 
         .remove-btn {
             background: none;
@@ -241,11 +243,11 @@
             transition: background-color 0.3s;
         }
 
-            .remove-btn:hover,
-            .remove-btn:focus {
-                background-color: #fee2e2;
-                outline: none;
-            }
+        .remove-btn:hover,
+        .remove-btn:focus {
+            background-color: #fee2e2;
+            outline: none;
+        }
 
         .submit-btn {
             align-self: flex-end;
@@ -262,11 +264,12 @@
             user-select: none;
         }
 
-            .submit-btn:hover,
-            .submit-btn:focus {
-                background-color: #3730a3;
-                outline: none;
-            }
+        .submit-btn:hover,
+        .submit-btn:focus {
+            background-color: #3730a3;
+            outline: none;
+        }
+
         @@media (max-width: 900px) {
             .container
 
@@ -315,6 +318,12 @@
         <section class="panel-middle" aria-label="Productos de la Categoría">
             <h2 id="middleTitle">Productos</h2>
             <table class="middle-table" aria-describedby="middleTitle" role="grid" aria-live="polite" aria-relevant="additions removals">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Precio</th>
+                    </tr>
+                </thead>
                 <tbody id="middleTableBody">
                     <!-- Items loaded dynamically -->
                 </tbody>
@@ -331,7 +340,8 @@
                         <tr>
                             <th scope="col">Producto</th>
                             <th scope="col" style="width: 80px; text-align:center;">Cantidad</th>
-                            <th scope="col" style="width: 40px;"></th>
+                            <th scope="col" style="width: 80px; text-align:center;">Total</th>
+                            <th scope="col" style="width: 80px; text-align:center;">Acción</th>
                         </tr>
                     </thead>
                     <tbody id="rightTableBody">
@@ -428,6 +438,11 @@
                     tdName.appendChild(spanName);
 
                     row.appendChild(tdName);
+
+                    const tdPrice = document.createElement('td');
+                    tdPrice.textContent = item.Price.toLocaleString();;
+                    row.appendChild(tdPrice);
+
                     middleTableBody.appendChild(row);
                 });
             }
@@ -525,8 +540,13 @@
 
                     tdQty.appendChild(qtyInput);
 
+                    const tdPrice = document.createElement('td');
+                    tdPrice.style.textAlign = 'center';
+                    tdPrice.textContent = (item.Price * quantity).toLocaleString();
+
                     const tdRemove = document.createElement('td');
                     tdRemove.style.textAlign = 'center';
+
                     const btnRemove = document.createElement('button');
                     btnRemove.className = 'remove-btn';
                     btnRemove.setAttribute('aria-label', `Remove ${item.Name} from selected items`);
@@ -537,10 +557,12 @@
                         updateMiddleSelection(item.Id);
                         renderRightTable();
                     });
+
                     tdRemove.appendChild(btnRemove);
 
                     row.appendChild(tdName);
                     row.appendChild(tdQty);
+                    row.appendChild(tdPrice);
                     row.appendChild(tdRemove);
 
                     rightTableBody.appendChild(row);
@@ -593,13 +615,13 @@
                     return;
                 }
 
-                // Create an array of { id, quantity }
+                // Create an array of { id, quantity, price }
                 const submissionArray = [];
                 selectedItems.forEach(({ item, quantity }) => {
-                    submissionArray.push({ id: item.Id, quantity: quantity });
+                    submissionArray.push({ id: item.Id, quantity: quantity, price: item.Price }); // Include price
                 });
+
                 selectedItemsInput.value = JSON.stringify(submissionArray);
-                // The form will submit normally with this data in the hidden input
             });
 
             if(categoryButtons.length > 0) {
