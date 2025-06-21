@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EasyPOS.Backoffice.Migrations
 {
     /// <inheritdoc />
-    public partial class Starting : Migration
+    public partial class FirstmigrationagainfromHome : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -85,7 +85,7 @@ namespace EasyPOS.Backoffice.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EntryType = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
-                    UserId = table.Column<int>(type: "int", maxLength: 30, nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
                     EntryDatetime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EntryDescrption = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true)
                 },
@@ -123,6 +123,9 @@ namespace EasyPOS.Backoffice.Migrations
                     Price = table.Column<int>(type: "int", nullable: false),
                     Stock = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Hide = table.Column<bool>(type: "bit", nullable: false),
+                    Bucket = table.Column<bool>(type: "bit", nullable: false),
+                    Promotion = table.Column<bool>(type: "bit", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false)
                 },
                 constraints: table =>
@@ -198,6 +201,26 @@ namespace EasyPOS.Backoffice.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Tickets",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TicketDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CustomerId = table.Column<int>(type: "int", nullable: false),
+                    GUID = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ServiceFee = table.Column<int>(type: "int", nullable: false),
+                    Tax = table.Column<int>(type: "int", nullable: false),
+                    TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
+                    ClosedAt = table.Column<DateTime>(type: "datetime", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tickets", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -251,6 +274,9 @@ namespace EasyPOS.Backoffice.Migrations
 
             migrationBuilder.DropTable(
                 name: "TablesOrSeats");
+
+            migrationBuilder.DropTable(
+                name: "Tickets");
 
             migrationBuilder.DropTable(
                 name: "Users");

@@ -1,6 +1,7 @@
 ﻿using EasyPOS.Backoffice.Data;
 using EasyPOS.Backoffice.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Text.Json;
 
 namespace EasyPOS.Backoffice.Controllers
 {
@@ -71,7 +72,55 @@ namespace EasyPOS.Backoffice.Controllers
 
             TableOrSeat ts = _appDbContext.TablesOrSeats.Find(id)!;
 
-            return View(ts);
+            List<Category> catList = _appDbContext.Categories.ToList();
+            List<Product> prodList = _appDbContext.Products.ToList();
+
+            SaloonViewModel svm = new SaloonViewModel();
+
+            svm.TableOrSeat = ts;
+
+            svm.Categories = new List<CategoryList>();
+            svm.CategoryItems = new Dictionary<int, List<ProductList>>();
+
+            foreach (Category cat in catList)
+            {
+                CategoryList cl = new CategoryList();
+
+                cl.Id = cat.Id;
+                cl.Name = cat.Description!;
+
+
+                svm.Categories!.Add(cl);
+
+                List<ProductList> productsList = new List<ProductList>();
+
+                foreach (Product prod in prodList.Where(x => x.Category == cat.Description).ToList())
+                {
+                    ProductList pList = new ProductList();
+                    pList.Id = prod.Id;
+                    pList.Name = prod.Description!;
+                    productsList.Add(pList);
+                }
+
+                svm.CategoryItems!.Add(cat.Id,productsList);
+            }
+
+            return View(svm);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateTicket(string selectedItemsJson)
+        {
+            if (string.IsNullOrEmpty(selectedItemsJson))
+            {
+                ModelState.AddModelError(string.Empty, "No items selected.");
+                return View();
+            }
+
+            List<SelectedItem> selectedItems = JsonSerializer.Deserialize<List<SelectedItem>>(selectedItemsJson);
+
+            return RedirectToAction("SaloonStatus");
         }
     }
 }

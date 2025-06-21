@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyPOS.Backoffice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250618161835_Added Tickets table")]
-    partial class AddedTicketstable
+    [Migration("20250621050616_First migration again from Home")]
+    partial class FirstmigrationagainfromHome
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
