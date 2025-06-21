@@ -353,13 +353,13 @@
             </form>
         </section>
     </main>
-
     <script>
         (() => {
             "use strict";
 
             // Data from server side
-            const categoryItems = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(categoryItems));
+            const categoryItems = JSON.parse('@Html.Raw(System.Text.Json.JsonSerializer.Serialize(categoryItems))');
+            const tckguid = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.TableOrSeat.GUID));
 
             // DOM references
             const categoryButtons = document.querySelectorAll('.category-button');
@@ -440,7 +440,7 @@
                     row.appendChild(tdName);
 
                     const tdPrice = document.createElement('td');
-                    tdPrice.textContent = item.Price.toLocaleString();;
+                    tdPrice.textContent = item.Price.toLocaleString();
                     row.appendChild(tdPrice);
 
                     middleTableBody.appendChild(row);
@@ -521,6 +521,7 @@
 
                     const tdQty = document.createElement('td');
                     tdQty.style.textAlign = 'center';
+
                     const qtyInput = document.createElement('input');
                     qtyInput.type = 'number';
                     qtyInput.min = '1';
@@ -557,7 +558,6 @@
                         updateMiddleSelection(item.Id);
                         renderRightTable();
                     });
-
                     tdRemove.appendChild(btnRemove);
 
                     row.appendChild(tdName);
@@ -615,10 +615,11 @@
                     return;
                 }
 
-                // Create an array of { id, quantity, price }
+                // Create an array of { id, quantity, price, guid }
                 const submissionArray = [];
+
                 selectedItems.forEach(({ item, quantity }) => {
-                    submissionArray.push({ id: item.Id, quantity: quantity, price: item.Price }); // Include price
+                    submissionArray.push({guid: tckguid, id: item.Id, quantity: quantity, price: item.Price });
                 });
 
                 selectedItemsInput.value = JSON.stringify(submissionArray);

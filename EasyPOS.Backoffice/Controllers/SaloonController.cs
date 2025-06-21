@@ -49,6 +49,8 @@ namespace EasyPOS.Backoffice.Controllers
             }
 
             tblsea.Status = "OCUPADA";
+            tblsea.GUID = guid.ToString();
+
             _appDbContext.TablesOrSeats.Update(tblsea);
             _appDbContext.SaveChanges();
 
@@ -69,8 +71,11 @@ namespace EasyPOS.Backoffice.Controllers
             }
 
             tblsea.Status = "DISPONIBLE";
+            tblsea.GUID = string.Empty;
+
             _appDbContext.TablesOrSeats.Update(tblsea);
             _appDbContext.SaveChanges();
+            
             TempData["success"] = "Mesa/Barra asignada exitosamente.";
 
             return RedirectToAction("SaloonStatus");
@@ -138,11 +143,11 @@ namespace EasyPOS.Backoffice.Controllers
             {
                 TicketDetail td = new TicketDetail();
 
-                td.GUID = string.Empty; // need to be fixed
+                td.GUID = si.guid;
                 td.ProdId = si.id;
                 td.Quantity = si.quantity;
-                td.UnitPrice = si.price / td.Quantity;
-                td.TotalPrice = si.price;
+                td.UnitPrice = si.price;
+                td.TotalPrice = si.price * si.quantity;
 
                 _appDbContext.TicketDetails.Add(td);
             }

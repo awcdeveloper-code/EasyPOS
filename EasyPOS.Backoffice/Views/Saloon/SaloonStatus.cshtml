@@ -23,7 +23,7 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: var(--spacing-l);
-        max-width: 900px;
+        max-width: 1100px;
         margin: 0 auto;
         padding: var(--spacing-l);
         background: var(--background-color);
@@ -116,7 +116,7 @@
                 <tr>
                     <th scope="col">Id</th>
                     <th scope="col" style="width:150px">Nombre</th>
-                    <th scope="col">Acción</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -129,7 +129,10 @@
                             <td>@item.Name</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Saloon" asp-action="UpdateTicket" asp-route-id="@item.Id" class="btn btn-success">Actualizar</a>
+                                    <a asp-controller="Saloon" asp-action="UpdateTicket" asp-route-id="@item.Id" class="btn btn-primary">Actualizar</a>
+                                </div>
+                                <div class="btn-group" role="group">
+                                    <a asp-controller="Saloon" asp-action="Pay" asp-route-id="@item.Id" class="btn btn-success">Pagar</a>
                                 </div>
                                 <div class="btn-group" role="group">
                                     <a asp-controller="Saloon" asp-action="Available" asp-route-id="@item.Id" class="btn btn-danger">Disponible</a>
