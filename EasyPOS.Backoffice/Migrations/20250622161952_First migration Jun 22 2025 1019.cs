@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EasyPOS.Backoffice.Migrations
 {
     /// <inheritdoc />
-    public partial class Firstcmigrationagain : Migration
+    public partial class FirstmigrationJun2220251019 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -192,7 +192,8 @@ namespace EasyPOS.Backoffice.Migrations
                     Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false),
                     Occupants = table.Column<int>(type: "int", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
-                    NickName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: true),
+                    Ticket = table.Column<int>(type: "int", nullable: false),
+                    GUID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -230,6 +231,7 @@ namespace EasyPOS.Backoffice.Migrations
                     ServiceFee = table.Column<int>(type: "int", nullable: false),
                     Tax = table.Column<int>(type: "int", nullable: false),
                     TotalPrice = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime", nullable: false),
                     ClosedAt = table.Column<DateTime>(type: "datetime", nullable: false)
                 },

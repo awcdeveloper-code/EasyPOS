@@ -79,7 +79,6 @@
         <table aria-label="Disponibles">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col" style="width:150px">Nombre</th>
                     <th scope="col">Acción</th>
                 </tr>
@@ -90,11 +89,10 @@
                     foreach (var item in Model.OrderBy(item => item.Name).Where(x => x.Status == "DISPONIBLE"))
                     {
                         <tr>
-                            <td>@item.Id</td>
                             <td>@item.Name</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Saloon" asp-action="Assign" asp-route-id="@item.Id" class="btn btn-primary">Asignar</a>
+                                    <a asp-controller="Saloon" asp-action="AssignTicket" asp-route-id="@item.Id" class="btn btn-primary">Asignar</a>
                                 </div>
                             </td>
                         </tr>
@@ -114,7 +112,6 @@
         <table aria-label="Disponibles">
             <thead>
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col" style="width:150px">Nombre</th>
                     <th scope="col">Acciones</th>
                 </tr>
@@ -125,17 +122,19 @@
                     foreach (var item in Model.OrderBy(item => item.Name).Where(x => x.Status != "DISPONIBLE"))
                     {
                         <tr>
-                            <td>@item.Id</td>
                             <td>@item.Name</td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <a asp-controller="Saloon" asp-action="UpdateTicket" asp-route-id="@item.Id" class="btn btn-primary">Actualizar</a>
                                 </div>
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Saloon" asp-action="Pay" asp-route-id="@item.Id" class="btn btn-success">Pagar</a>
+                                    <a asp-controller="Saloon" asp-action="PrintTicket" asp-route-id="@item.Id" class="btn btn-info">Imprimir</a>
                                 </div>
                                 <div class="btn-group" role="group">
-                                    <a asp-controller="Saloon" asp-action="Available" asp-route-id="@item.Id" class="btn btn-danger">Disponible</a>
+                                    <a asp-controller="Saloon" asp-action="PayTicket" asp-route-id="@item.Id" class="btn btn-success">Pagar</a>
+                                </div>
+                                <div class="btn-group" role="group">
+                                    <a asp-controller="Saloon" asp-action="Available" asp-route-id="@item.Id" class="btn btn-danger">Cerrar</a>
                                 </div>
                             </td>
                         </tr>

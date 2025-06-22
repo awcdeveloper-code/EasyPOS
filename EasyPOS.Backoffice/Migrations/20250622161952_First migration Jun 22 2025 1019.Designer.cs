@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyPOS.Backoffice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250621204801_First cmigration again")]
-    partial class Firstcmigrationagain
+    [Migration("20250622161952_First migration Jun 22 2025 1019")]
+    partial class FirstmigrationJun2220251019
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -377,12 +377,11 @@ namespace EasyPOS.Backoffice.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("GUID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("NickName")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -393,6 +392,9 @@ namespace EasyPOS.Backoffice.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("Ticket")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -426,6 +428,9 @@ namespace EasyPOS.Backoffice.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ServiceFee")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<int>("Tax")

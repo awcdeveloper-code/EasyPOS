@@ -26,6 +26,8 @@ namespace EasyPOS.Backoffice.Models
         [Display(Name = "Estado")]
         public string? Status { get; set; } = string.Empty;
 
+        public int Ticket { get; set; } = 0;
+
         public string? GUID { get; set; } = string.Empty;
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;

@@ -25,7 +25,7 @@ namespace EasyPOS.Backoffice.Controllers
             return View(tblseaList);
         }
 
-        public IActionResult Assign(int id)
+        public IActionResult AssignTicket(int id)
         {
             _logger.LogInformation("SaloonController:Assign called.");
 
@@ -36,6 +36,7 @@ namespace EasyPOS.Backoffice.Controllers
             Guid guid = Guid.NewGuid();
 
             ticket.GUID = guid.ToString();
+            ticket.Status = (int)TicketStatus.Open;
             ticket.CreatedAt = DateTime.Now;
 
             _appDbContext.Tickets.Add(ticket);
@@ -50,32 +51,11 @@ namespace EasyPOS.Backoffice.Controllers
 
             tblsea.Status = "OCUPADA";
             tblsea.GUID = guid.ToString();
+            tblsea.Ticket = ticket.Id;
 
             _appDbContext.TablesOrSeats.Update(tblsea);
             _appDbContext.SaveChanges();
 
-            TempData["success"] = "Mesa/Barra asignada exitosamente.";
-
-            return RedirectToAction("SaloonStatus");
-        }
-
-        public IActionResult Available(int? id)
-        {
-            _logger.LogInformation("SaloonController:Available called.");
-
-            TableOrSeat tblsea = _appDbContext.TablesOrSeats.Find(id)!;
-
-            if (tblsea == null)
-            {
-                return NotFound();
-            }
-
-            tblsea.Status = "DISPONIBLE";
-            tblsea.GUID = string.Empty;
-
-            _appDbContext.TablesOrSeats.Update(tblsea);
-            _appDbContext.SaveChanges();
-            
             TempData["success"] = "Mesa/Barra asignada exitosamente.";
 
             return RedirectToAction("SaloonStatus");
@@ -156,5 +136,42 @@ namespace EasyPOS.Backoffice.Controllers
 
             return RedirectToAction("SaloonStatus");
         }
+
+        public IActionResult PrintTicket(int id)
+        {
+            _logger.LogInformation("SaloonController:PrintTicket called.");
+
+            return View();
+        }
+
+        public IActionResult PayTicket(int id)
+        {
+            _logger.LogInformation("SaloonController:PayTicket called.");
+
+            return View();
+        }
+
+        public IActionResult Available(int? id)
+        {
+            _logger.LogInformation("SaloonController:Available called.");
+
+            TableOrSeat tblsea = _appDbContext.TablesOrSeats.Find(id)!;
+
+            if (tblsea == null)
+            {
+                return NotFound();
+            }
+
+            tblsea.Status = "DISPONIBLE";
+            tblsea.GUID = string.Empty;
+
+            _appDbContext.TablesOrSeats.Update(tblsea);
+            _appDbContext.SaveChanges();
+
+            TempData["success"] = "Mesa/Barra asignada exitosamente.";
+
+            return RedirectToAction("SaloonStatus");
+        }
+
     }
 }

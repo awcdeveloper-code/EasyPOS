@@ -2,6 +2,14 @@
 
 namespace EasyPOS.Backoffice.Models
 {
+    public enum TicketStatus
+    {
+        Normal = 0,
+        Open = 1,
+        Aborted = 2,
+        Cancelleded = 3
+    }
+
     public class Ticket
     {
         [Key]
@@ -24,6 +32,9 @@ namespace EasyPOS.Backoffice.Models
 
         [Required]
         public int TotalPrice { get; set; } = 0;
+
+        [Required]
+        public int Status { get; set; } = (int)TicketStatus.Normal;
 
         [Required]
         public DateTime CreatedAt { get; set; } = DateTime.Now;

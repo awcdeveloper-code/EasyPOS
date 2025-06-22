@@ -390,6 +390,9 @@ namespace EasyPOS.Backoffice.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int>("Ticket")
+                        .HasColumnType("int");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(5)
@@ -422,6 +425,9 @@ namespace EasyPOS.Backoffice.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ServiceFee")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<int>("Tax")
