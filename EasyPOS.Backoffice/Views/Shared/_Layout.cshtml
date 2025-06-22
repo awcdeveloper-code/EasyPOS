@@ -11,6 +11,31 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <style>
+        .dropdown-menu {
+            background-color: #333;
+            border: 1px solid #555;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-item {
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #555;
+            color: cyan;
+        }
+
+        .dropdown-divider {
+            height: 2px;
+            background-color: #666;
+            margin: 8px 0;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -147,7 +172,7 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <input class="form-control me-sm-2" type="search" placeholder="Buscar">
+                        <input class="form-control me-sm-2" type="search" placeholder="Buscar...">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </div>

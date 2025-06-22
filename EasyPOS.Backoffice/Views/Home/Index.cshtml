@@ -1,16 +1,22 @@
 ﻿@{
-    ViewData["Title"] = "EasyPOS Inicio";
+    ViewData["Title"] = "EasyPOS";
 }
 <style>
     .flex-center {
         display: flex;
-        flex-direction: column; /* Arrange items in a column */
-        justify-content: center; /* Center items vertically */
-        align-items: center; /* Center items horizontally */
-        height: 100vh; /* Full viewport height */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
     }
 </style>
 <div class="flex-center">
-    <h1 class="display-4">Bienvenido a EasyPOS</h1>
-    <p>&copy; 2025 AIDAware Consultancies - Derechos Reservados.</p>
+    <h1 class="display-1">EasyPOS BackOffice</h1>
+    <span>&copy; 2021-<span id="currentYear"></span> AIDAware Consultancies - Derechos Reservados.</span>
+    <span>+(506) 8820-1824 - guillermoegrillo@outlook.com</span>
+    <span>San José, Costa Rica 10307</span>
 </div>
+<script>
+    const currentYear = new Date().getFullYear();
+    document.getElementById('currentYear').textContent = currentYear;
+</script>
