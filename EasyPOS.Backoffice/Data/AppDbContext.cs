@@ -20,38 +20,27 @@ namespace EasyPOS.Backoffice.Data
         public DbSet<Promotion> Promotions { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
         public DbSet<TicketDetail> TicketDetails { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>().HasKey(u => u.Id);
-
             modelBuilder.Entity<Role>().HasKey(u => u.Id);
-
             modelBuilder.Entity<ActionOfWork>().HasKey(u => u.Id);
-
             modelBuilder.Entity<Log>().HasKey(u => u.Id);
-
             modelBuilder.Entity<Category>().HasKey(u => u.Id);
-
             modelBuilder.Entity<Product>().HasKey(u => u.Id);
-
             modelBuilder.Entity<TableOrSeat>().HasKey(u => u.Id);
-
             modelBuilder.Entity<NewFeatureRequest>().HasKey(u => u.Id);
-
             modelBuilder.Entity<ReportProblem>().HasKey(u => u.Id);
-
             modelBuilder.Entity<FrecuentCustomer>().HasKey(u => u.Id);
-
             modelBuilder.Entity<Bucket>().HasKey(u => u.Id);
-
             modelBuilder.Entity<Promotion>().HasKey(u => u.Id);
-
             modelBuilder.Entity<Ticket>().HasKey(u => u.Id);
-
             modelBuilder.Entity<TicketDetail>().HasKey(u => u.Id);
+            modelBuilder.Entity<Expense>().HasKey(u => u.Id);
 
             // adjust columns type
             modelBuilder.Entity<User>()
@@ -111,6 +100,14 @@ namespace EasyPOS.Backoffice.Data
                 .HasColumnType("datetime");
 
             modelBuilder.Entity<TicketDetail>()
+                .Property(e => e.CreatedAt)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Expense>()
+                .Property(e => e.Date)
+                .HasColumnType("datetime");
+
+            modelBuilder.Entity<Expense>()
                 .Property(e => e.CreatedAt)
                 .HasColumnType("datetime");
         }
