@@ -173,5 +173,11 @@ namespace EasyPOS.Backoffice.Controllers
             return RedirectToAction("SaloonStatus");
         }
 
+        public IActionResult DailyClosing()
+        {
+            _logger.LogInformation("SaloonController:DailyClosing called.");
+
+            return View();
+        }
     }
 }
