@@ -22,5 +22,11 @@ namespace EasyPOS.Backoffice.Controllers
 
             return View();
         }
+        public IActionResult InventoryStatus()
+        {
+            _logger.LogInformation("ReportsController:InventoryStatus called.");
+
+            return View();
+        }
     }
 }

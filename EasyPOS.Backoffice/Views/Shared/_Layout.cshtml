@@ -45,6 +45,7 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <a class="navbar-brand text-light" href="#">Fecha Contable: @DateTime.Now.ToString("dd.MM.yyyy")</a>
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -75,6 +76,9 @@
                                 <a class="dropdown-item" asp-controller="Reports" asp-action="ProductsCatalog">
                                     <i class="bi bi-file-text-fill me-2"></i> Catálogo de Productos
                                 </a>
+                                <a class="dropdown-item" asp-controller="Reports" asp-action="InventoryStatus">
+                                    <i class="bi bi-clipboard2-check-fill me-2"></i> Estado del Inventario
+                                </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" asp-controller="Expenses" asp-action="Index">
                                     <i class="bi bi-cash-stack me-2"></i> Gastos
@@ -84,7 +88,7 @@
                             <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Inventario</a>
                             <div class="dropdown-menu">
                                 <a class="dropdown-item" asp-controller="Inventory" asp-action="Providers">
-                                    <i class="bi bi-people-fill me-2"></i> Proveedores
+                                    <i class="bi bi-truck me-2"></i> Proveedores
                                 </a>
                                 <a class="dropdown-item" asp-controller="Inventory" asp-action="Shopping">
                                     <i class="bi-cart-check-fill me-2"></i> Compras
@@ -96,7 +100,7 @@
                                     <i class="bi bi-bookmark-x-fill me-2"></i> Productos Dañados
                                 </a>
                                 <a class="dropdown-item" asp-controller="Inventory" asp-action="InventoryCheck">
-                                    <i class="bi bi-clipboard2-check-fill me-2"></i> Estado de Existencias
+                                    <i class="bi bi-clipboard2-check-fill me-2"></i> Mantenimiento de Existencias
                                 </a>
                                 <a class="dropdown-item" asp-controller="Inventory" asp-action="Reports">
                                     <i class="bi bi-printer-fill me-2"></i> Reportes
