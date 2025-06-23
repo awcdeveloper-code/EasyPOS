@@ -4,10 +4,38 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EasyPOS BackOffice</title>
+
     <script type="importmap"></script>
+
     <link rel="icon" href="/EasyPOS.ico">
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <style>
+        .dropdown-menu {
+            background-color: #333;
+            border: 1px solid #555;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .dropdown-item {
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+
+        .dropdown-item:hover {
+            background-color: #555;
+            color: cyan;
+        }
+
+        .dropdown-divider {
+            height: 2px;
+            background-color: #666;
+            margin: 8px 0;
+            opacity: 1;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -17,60 +45,142 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+                <a class="navbar-brand text-light" href="#">Fecha Contable: @DateTime.Now.ToString("dd.MM.yyyy")</a>
                 <div class="collapse navbar-collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link text-light" asp-controller="Saloon" asp-action="SaloonStatus">Estado del Salón</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Diario</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Saloon" asp-action="SaloonStatus">
+                                    <i class="bi bi-search me-2"></i> Estado del Salón
+                                </a>
+                                <a class="dropdown-item" asp-controller="Saloon" asp-action="DailyClosing">
+                                    <i class="bi bi-door-closed-fill me-2"></i> Cierre de Turno
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="Expenses" asp-action="Index">
+                                    <i class="bi bi-cash-stack me-2"></i> Gastos
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Reportes Diarios</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Sales" asp-action="TodaySales">
+                                    <i class="bi bi-cash-stack me-2"></i> Ventas de Hoy
+                                </a>
+                                <a class="dropdown-item" asp-controller="Sales" asp-action="OpenSales">
+                                    <i class="bi bi-wallet-fill me-2"></i> Tiquetes Pendientes
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="Reports" asp-action="ProductsCatalog">
+                                    <i class="bi bi-file-text-fill me-2"></i> Catálogo de Productos
+                                </a>
+                                <a class="dropdown-item" asp-controller="Reports" asp-action="InventoryStatus">
+                                    <i class="bi bi-clipboard2-check-fill me-2"></i> Estado del Inventario
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" asp-controller="Expenses" asp-action="Index">
+                                    <i class="bi bi-cash-stack me-2"></i> Gastos
+                                </a>
+                            </div>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Inventario</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Providers">
+                                    <i class="bi bi-truck me-2"></i> Proveedores
+                                </a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Shopping">
+                                    <i class="bi-cart-check-fill me-2"></i> Compras
+                                </a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Notes">
+                                    <i class="bi bi-stickies-fill me-2"></i> Notas Crédito/Débito
+                                </a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="DamagedProducts">
+                                    <i class="bi bi-bookmark-x-fill me-2"></i> Productos Dañados
+                                </a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="InventoryCheck">
+                                    <i class="bi bi-clipboard2-check-fill me-2"></i> Mantenimiento de Existencias
+                                </a>
+                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Reports">
+                                    <i class="bi bi-printer-fill me-2"></i> Reportes
+                                </a>
+                            </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Configuración</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-controller="Roles" asp-action="Index">Roles</a>
-                                <a class="dropdown-item" asp-controller="Users" asp-action="Index">Colaboradores</a>
-                                <a class="dropdown-item" asp-controller="ActionsOfWork" asp-action="Index">Acciones de Trabajo</a>
+                                <a class="dropdown-item" asp-controller="Categories" asp-action="Index">
+                                    <i class="bi bi-collection-fill me-2"></i> Categorías
+                                </a>
+                                <a class="dropdown-item" asp-controller="Products" asp-action="Index">
+                                    <i class="bi bi-file-text-fill me-2"></i> Productos
+                                </a>
+                                <a class="dropdown-item" asp-controller="Buckets" asp-action="Index">
+                                    <i class="bi bi-bucket-fill me-2"></i> Baldes
+                                </a>
+                                <a class="dropdown-item" asp-controller="Promotions" asp-action="Index">
+                                    <i class="bi bi-backpack2-fill me-2"></i> Promociones
+                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="Categories" asp-action="Index">Categorías</a>
-                                <a class="dropdown-item" asp-controller="Products" asp-action="Index">Productos</a>
-                                <a class="dropdown-item" asp-controller="Buckets" asp-action="Index">Baldes</a>
-                                <a class="dropdown-item" asp-controller="Promotions" asp-action="Index">Promociones</a>
+                                <a class="dropdown-item" asp-controller="Roles" asp-action="Index">
+                                    <i class="bi bi-people-fill me-2"></i> Roles
+                                </a>
+                                <a class="dropdown-item" asp-controller="Users" asp-action="Index">
+                                    <i class="bi bi-person-fill me-2"></i> Colaboradores
+                                </a>
+                                <a class="dropdown-item" asp-controller="ActionsOfWork" asp-action="Index">
+                                    <i class="bi bi-person-workspace me-2"></i> Acciones de Trabajo
+                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="TablesAndSeats" asp-action="Index">Mesas y Barras</a>
-                                <a class="dropdown-item" asp-controller="FrecuentCustomers" asp-action="Index">Clientes Frecuentes</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="Config" asp-action="Log">Bitácora</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Inventario</a>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Providers">Proveedores</a>
-                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Shopping">Compras</a>
-                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Notes">Notas Crédito/Débito</a>
-                                <a class="dropdown-item" asp-controller="Inventory" asp-action="DamagedProducts">Productos Dañados</a>
-                                <a class="dropdown-item" asp-controller="Inventory" asp-action="InventoryCheck">Estado de Existencias</a>
-                                <a class="dropdown-item" asp-controller="Inventory" asp-action="Reports">Reportes</a>
+                                <a class="dropdown-item" asp-controller="TablesAndSeats" asp-action="Index">
+                                    <i class="bi bi-back me-2"></i> Mesas y Barras
+                                </a>
+                                <a class="dropdown-item" asp-controller="FrecuentCustomers" asp-action="Index">
+                                    <i class="bi bi-person-fill-check me-2"></i> Clientes Frecuentes
+                                </a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle text-light" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ayuda</a>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" asp-controller="Help" asp-action="GetHelp">Ver Ayuda</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="InitialTour">Tour Inicial</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="TipsAndTricks">Consejos y Trucos</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="GetHelp">
+                                    <i class="bi bi-question-circle-fill me-2"></i> Ver Ayuda
+                                </a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="InitialTour">
+                                    <i class="bi bi-signpost-split-fill me-2"></i> Tour Inicial
+                                </a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="TipsAndTricks">
+                                    <i class="bi bi-info-circle-fill me-2"></i> Consejos y Trucos
+                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="WhatsNew">Qué hay nuevo?</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="ReportProblem_Index">Reportar un Problema</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="NewFeatureRequest_Index">Sugerir una mejora</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="TechnicalSupport">Soporte Técnico</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="CheckForUpdates">Revisar Actualizaciones</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="WhatsNew">
+                                    <i class="bi bi-chat-left-text-fill me-2"></i> Qué hay nuevo?
+                                </a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="ReportProblem_Index">
+                                    <i class="bi bi-bug-fill me-2"></i> Reportar un Problema
+                                </a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="NewFeatureRequest_Index">
+                                    <i class="bi bi-node-plus-fill me-2"></i> Sugerir una mejora
+                                </a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="TechnicalSupport">
+                                    <i class="bi bi-headset me-2"></i> Soporte Técnico
+                                </a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="CheckForUpdates">
+                                    <i class="bi bi-calendar3 me-2"></i> Revisar Actualizaciones
+                                </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="TermsAndConditions">Términos y Condiciones</a>
-                                <a class="dropdown-item" asp-controller="Help" asp-action="AboutEasyPOS">Acerca de EasyPOS</a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="TermsAndConditions">
+                                    <i class="bi bi-bank2 me-2"></i> Términos y Condiciones
+                                </a>
+                                <a class="dropdown-item" asp-controller="Help" asp-action="AboutEasyPOS">
+                                    <i class="bi bi-card-list me-2"></i> Acerca de EasyPOS
+                                </a>
                             </div>
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <input class="form-control me-sm-2" type="search" placeholder="Buscar">
+                        <input class="form-control me-sm-2" type="search" placeholder="Buscar...">
                         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </div>

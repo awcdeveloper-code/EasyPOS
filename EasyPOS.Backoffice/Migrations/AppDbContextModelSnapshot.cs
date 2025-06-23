@@ -109,6 +109,38 @@ namespace EasyPOS.Backoffice.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("EasyPOS.Backoffice.Models.Expense", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Approver")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Expenses");
+                });
+
             modelBuilder.Entity("EasyPOS.Backoffice.Models.FrecuentCustomer", b =>
                 {
                     b.Property<int>("Id")
@@ -374,12 +406,11 @@ namespace EasyPOS.Backoffice.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("GUID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("NickName")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -390,6 +421,9 @@ namespace EasyPOS.Backoffice.Migrations
                         .IsRequired()
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
+
+                    b.Property<int>("Ticket")
+                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -425,6 +459,9 @@ namespace EasyPOS.Backoffice.Migrations
                     b.Property<int>("ServiceFee")
                         .HasColumnType("int");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<int>("Tax")
                         .HasColumnType("int");
 
@@ -438,6 +475,38 @@ namespace EasyPOS.Backoffice.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("EasyPOS.Backoffice.Models.TicketDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("GUID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProdId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UnitPrice")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TicketDetails");
                 });
 
             modelBuilder.Entity("EasyPOS.Backoffice.Models.User", b =>

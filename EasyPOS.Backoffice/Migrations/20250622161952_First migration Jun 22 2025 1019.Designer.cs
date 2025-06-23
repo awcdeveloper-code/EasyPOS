@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EasyPOS.Backoffice.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250617191725_Change to Logger table")]
-    partial class ChangetoLoggertable
+    [Migration("20250622161952_First migration Jun 22 2025 1019")]
+    partial class FirstmigrationJun2220251019
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -229,6 +229,9 @@ namespace EasyPOS.Backoffice.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<bool>("Bucket")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Category")
                         .IsRequired()
                         .HasMaxLength(30)
@@ -245,8 +248,14 @@ namespace EasyPOS.Backoffice.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<bool>("Hide")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Price")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Promotion")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -368,12 +377,11 @@ namespace EasyPOS.Backoffice.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("GUID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("NickName")
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
@@ -385,6 +393,9 @@ namespace EasyPOS.Backoffice.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<int>("Ticket")
+                        .HasColumnType("int");
+
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasMaxLength(5)
@@ -393,6 +404,80 @@ namespace EasyPOS.Backoffice.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("TablesOrSeats");
+                });
+
+            modelBuilder.Entity("EasyPOS.Backoffice.Models.Ticket", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("ClosedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GUID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ServiceFee")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tax")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TicketDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TotalPrice")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tickets");
+                });
+
+            modelBuilder.Entity("EasyPOS.Backoffice.Models.TicketDetail", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<string>("GUID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProdId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TotalPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UnitPrice")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TicketDetails");
                 });
 
             modelBuilder.Entity("EasyPOS.Backoffice.Models.User", b =>

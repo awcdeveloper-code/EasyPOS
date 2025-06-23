@@ -1,0 +1,44 @@
+﻿@model ExpenseViewModel
+<form method="post">
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary">Crear Gasto</h2>
+            <hr/>
+        </div>
+        <div asp-validation-summary="None"></div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Expense.Date" class="p-0"></label>
+            <input asp-for="Expense.Date" class="form-control" type="date" style="width: 150px" />
+            <span asp-validation-for="Expense.Date" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Expense.Description" class="p-0"></label>
+            <input asp-for="Expense.Description" class="form-control" style="width:300px" />
+            <span asp-validation-for="Expense.Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Expense.Amount" class="p-0"></label>
+            <input asp-for="Expense.Amount" class="form-control" style="width:100px" />
+            <span asp-validation-for="Expense.Amount" class="text-danger"></span>
+        </div>
+        <div class="mb-3 row p-1">
+            <label asp-for="Expense.Approver" class="p-0"></label>
+            <select asp-for="Expense.Approver" asp-items="Model.Approvers" class="form-control" style="width: 250px;"></select>
+            <span asp-validation-for="Expense.Approver" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class="col-3 col-md-3">
+                <button type="submit" class="btn btn-primary form-control">Crear</button>
+            </div>
+            <div class="col-3 col-md-3">
+                <a asp-controller="Roles" asp-action="Index" class="btn btn-outline-secondary form-control border">Regresar</a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        <partial name ="_ValidationScriptsPartial" />
+    }
+}
