@@ -71,7 +71,13 @@ namespace EasyPOS.Backoffice.Controllers
 
             TableOrSeat ts = _appDbContext.TablesOrSeats.Find(id)!;
 
-            return View(ts);
+            TableOrSeatViewModel tsvm = new TableOrSeatViewModel();
+
+            tsvm.tableSeat = ts;
+            tsvm.Categories = _appDbContext.Categories.ToList();
+            tsvm.Products = _appDbContext.Products.ToList();
+
+            return View(tsvm);
         }
     }
 }

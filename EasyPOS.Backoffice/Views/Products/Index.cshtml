@@ -104,7 +104,7 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col" style="width:250px">Descripción</th>
+                    <th scope="col" style="width:250px">Nombre</th>
                     <th scope="col">Categoría</th>
                     <th scope="col">Costo</th>
                     <th scope="col">Precio</th>
@@ -116,11 +116,11 @@
             <tbody>
                 @if (Model != null && Model.Any())
                 {
-                    foreach (var item in Model.OrderBy(item => item.Description))
+                    foreach (var item in Model.OrderBy(item => item.Name))
                     {
                         <tr>
                             <td>@item.Id</td>
-                            <td>@item.Description</td>
+                            <td>@item.Name</td>
                             <td>@item.Category</td>
                             <td>@item.Cost</td>
                             <td>@item.Price</td>

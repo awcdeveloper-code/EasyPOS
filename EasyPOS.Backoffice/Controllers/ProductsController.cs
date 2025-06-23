@@ -30,11 +30,11 @@ namespace EasyPOS.Backoffice.Controllers
             _logger.LogInformation("ProductsController:Create called.");
 
             var catList = _appDbContext.Categories
-                .OrderBy(c => c.Description)
+                .OrderBy(c => c.Name)
                 .Select(c => new SelectListItem
                 {
                     Value = c.Id.ToString(),
-                    Text = c.Description
+                    Text = c.Name
                 })
                 .ToList();
 
@@ -61,7 +61,7 @@ namespace EasyPOS.Backoffice.Controllers
 
                 int id = Convert.ToInt32(prodView.Product.Category);
                 Category cat = _appDbContext.Categories.Find(id)!;
-                prod.Category = cat.Description;
+                prod.Category = cat.Name;
 
                 _appDbContext.Products.Add(prod);
                 _appDbContext.SaveChanges();
@@ -87,11 +87,11 @@ namespace EasyPOS.Backoffice.Controllers
             }
 
             var catList = _appDbContext.Categories
-                .OrderBy(c => c.Description)
+                .OrderBy(c => c.Name)
                 .Select(c => new SelectListItem
                 {
                     Value = c.Id.ToString(),
-                    Text = c.Description
+                    Text = c.Name
                 })
                 .ToList();
 
@@ -118,7 +118,7 @@ namespace EasyPOS.Backoffice.Controllers
 
                 int id = Convert.ToInt32(prodView.Product.Category);
                 Category cat = _appDbContext.Categories.Find(id)!;
-                prod.Category = cat.Description;
+                prod.Category = cat.Name;
 
                 _appDbContext.Products.Update(prod);
                 _appDbContext.SaveChanges();
