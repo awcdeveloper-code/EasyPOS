@@ -1,7 +1,35 @@
 ﻿@model SaloonViewModel
 @{
-    var categories = Model.Categories;
-    var categoryItems = Model.CategoryItems;
+    var categories = new List<dynamic> {
+        new { Id = 1, Name = "Beverages" },
+        new { Id = 2, Name = "Soft Drinks" },
+        new { Id = 3, Name = "Beers" },
+        new { Id = 4, Name = "Liquors" },
+        new { Id = 5, Name = "Meals" }
+    };
+    var categoryItems = new Dictionary<int, List<dynamic>> {
+        { 1, new List<dynamic> {
+            new { Id = 101, Name = "Coke", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Coke" },
+            new { Id = 102, Name = "Pepsi", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Pepsi" },
+            new { Id = 103, Name = "7 Eleven", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=7+Eleven" }
+        }},
+        { 2, new List<dynamic> {
+            new { Id = 201, Name = "Fanta", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Fanta" },
+            new { Id = 202, Name = "Sprite", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Sprite" }
+        }},
+        { 3, new List<dynamic> {
+            new { Id = 301, Name = "Heineken", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Heineken" },
+            new { Id = 302, Name = "Budweiser", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Budweiser" }
+        }},
+        { 4, new List<dynamic> {
+            new { Id = 401, Name = "Whiskey", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Whiskey" },
+            new { Id = 402, Name = "Vodka", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Vodka" }
+        }},
+        { 5, new List<dynamic> {
+            new { Id = 501, Name = "Burger", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Burger" },
+            new { Id = 502, Name = "Pizza", ImageUrl = "https://placehold.co/64x64/0891b2/ffffff?text=Pizza" }
+        }},
+    };
 }
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -298,7 +326,7 @@
 </head>
 <body>
     <header role="banner" style="padding: 16px 24px; background: darkblue; color:#e0e7ff; font-weight:700; font-size:1.75rem; position: sticky; top: 0; z-index: 10; user-select:none;">
-        Cliente: @Model.TableOrSeat!.Name
+        Selección de Productos
     </header>
 
     <main class="container" role="main" aria-label="Category and item selection panels">
@@ -487,7 +515,9 @@
             }
 
             function renderRightTable() {
+                
                 clearTableBody(rightTableBody);
+
                 if(selectedItems.size === 0) {
                     const noRow = document.createElement('tr');
                     const tdNo = document.createElement('td');
@@ -499,6 +529,7 @@
                     rightTableBody.appendChild(noRow);
                     return;
                 }
+                
                 selectedItems.forEach(({ item, quantity }) => {
                     const row = document.createElement('tr');
                     row.setAttribute('role', 'row');

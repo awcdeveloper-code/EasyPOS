@@ -12,10 +12,10 @@ namespace EasyPOS.Backoffice.Models
         [Display(Name = "Código")]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "La descripción es requisito.")]
+        [Required(ErrorMessage = "El nombre es requisito.")]
         [MaxLength(30)]
-        [Display(Name = "Descripción")]
-        public string? Description { get; set; } = string.Empty;
+        [Display(Name = "Nombre")]
+        public string? Name { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "El estado es requisito.")]
         [MaxLength(20)]

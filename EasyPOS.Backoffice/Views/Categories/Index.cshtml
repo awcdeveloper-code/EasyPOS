@@ -102,7 +102,7 @@
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Descripción</th>
+                    <th scope="col">Nombre</th>
                     <th scope="col">Fecha de Creación</th>
                     <th scope="col">Acciones</th>
                 </tr>
@@ -110,11 +110,11 @@
             <tbody>
                 @if (Model != null && Model.Any())
                 {
-                    foreach (var item in Model.OrderBy(item => item.Description))
+                    foreach (var item in Model.OrderBy(item => item.Name))
                     {
                         <tr>
                             <td>@item.Id</td>
-                            <td>@item.Description</td>
+                            <td>@item.Name</td>
                             <td>@item.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
                             <td>
                                 <div class="w-100 btn-group" role="group">
