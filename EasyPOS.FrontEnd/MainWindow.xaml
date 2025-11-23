@@ -1,0 +1,225 @@
+﻿<Window x:Class="EasyPOS.FrontEnd.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EasyPOS.FrontEnd"
+        mc:Ignorable="d" Width="1600" Height="900"
+        WindowState="Maximized" WindowStyle="None"
+        ResizeMode="NoResize" Background="Indigo">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        
+        <!-- header -->
+
+        <!-- body -->
+        <Button Grid.Row="1" Grid.Column="1"
+                Name="QuickSale"
+                Click="btn_QuickSale"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/quickSale.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="VENTA RÁPIDA" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+        
+        <Button Grid.Row="1" Grid.Column="2"
+                Name="Tickets"
+                Click="btn_Tickets"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/accounts.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="CUENTAS" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="1" Grid.Column="3"
+                Name="AccountsReceivable"
+                Click="btn_AccountsReceivable"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/conotrafico.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="PENDIENTES"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="1"
+                Name="TodaySales"
+                Click="btn_TodaySales"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/todaysales.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="VENTAS"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="2"
+                Name="Queries"
+                Click="btn_Queries"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/search.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="CONSULTAS"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="2" Grid.Column="3"
+                Name="Inventory"
+                Click="btn_Inventory"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/inventory.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="INVENTARIO"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="4" Grid.Column="1"
+                Name="Settings"
+                Click="btn_Settings"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/SETTINGS.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="MANTENIMIENTO" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="4" Grid.Column="2"
+                Name="CloseShift"
+                Click="btn_CloseShift"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/report.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="CERRAR TURNO" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <Button Grid.Row="4" Grid.Column="3"
+                Name="Exit"
+                Click="btn_Exit"
+                Foreground="White"
+                Margin="10" FontSize="40"
+                FontWeight="DemiBold">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="Yellow" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <StackPanel Orientation="Horizontal">
+                <Image Source="/Images/logout.png"
+                       Width="96" Height="96" Margin="0 0 25 0"/>
+                <TextBlock Text="CERRAR SESIÓN" VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+
+        <!-- footer -->
+        <Label Grid.Column="1" Grid.Row="5"
+               VerticalContentAlignment="Center"
+               FontSize="20"
+               Foreground="White"
+               Content="Versión 1.0.1" />
+        <Label Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="5"
+               HorizontalAlignment="Center"
+               VerticalContentAlignment="Center"
+               FontSize="20"
+               Foreground="White"
+               Content="© 2021-2026 EasyPOS Guillermo E. Grillo III - Todos los derechos reservados." />
+        <Label Grid.Column="3" Grid.Row="5"
+               HorizontalAlignment="Right"
+               VerticalContentAlignment="Center"
+               FontSize="20"
+               Foreground="White"
+               Content="Fecha Contable: 21/09/1960" />
+    </Grid>
+</Window>

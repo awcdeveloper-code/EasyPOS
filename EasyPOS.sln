@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13 d17.14
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11217.181 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPOS.Backoffice", "EasyPOS.Backoffice\EasyPOS.Backoffice.csproj", "{59EE493B-1CD1-45A9-8607-5D9C8FB93F38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPOS.API", "EasyPOS.API\EasyPOS.API.csproj", "{2FCD09B5-8584-4834-9030-D82C9525AE4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasyPOS.FrontEnd", "EasyPOS.FrontEnd\EasyPOS.FrontEnd.csproj", "{4BAC6D6A-A7FC-47FA-A325-53B48C837864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{59EE493B-1CD1-45A9-8607-5D9C8FB93F38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59EE493B-1CD1-45A9-8607-5D9C8FB93F38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59EE493B-1CD1-45A9-8607-5D9C8FB93F38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FCD09B5-8584-4834-9030-D82C9525AE4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FCD09B5-8584-4834-9030-D82C9525AE4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FCD09B5-8584-4834-9030-D82C9525AE4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FCD09B5-8584-4834-9030-D82C9525AE4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BAC6D6A-A7FC-47FA-A325-53B48C837864}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BAC6D6A-A7FC-47FA-A325-53B48C837864}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BAC6D6A-A7FC-47FA-A325-53B48C837864}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BAC6D6A-A7FC-47FA-A325-53B48C837864}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
